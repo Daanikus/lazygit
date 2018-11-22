@@ -18,15 +18,16 @@ funcs:
         // var firstWord = splitText[0].split(/(?=[A-Z])/)
         var firstWord = splitText[0].match(/[A-Z][a-z]+/g)
         
-        firstWord.forEach(function(w) {
-          if (w.toLowerCase().indexOf(name.toLowerCase()) !== -1 ||
-              name.toLowerCase().indexOf(w.toLowerCase()) !== -1) {
+        if (firstWord != null) {
+          for (var i = 0; i < firstWord.length; i++) {
+            if (firstWord[i].toLowerCase().indexOf(name.toLowerCase()) !== -1 ||
+                name.toLowerCase().indexOf(firstWord[i].toLowerCase()) !== -1) {
+              splitText[0] = name
+              result = true 
+            }  
+          }
+        }
 
-            splitText[0] = name
-            result = true
-            
-          }    
-        })
 
         if (result) {
           return commentChar + " " + splitText.join(" ")
