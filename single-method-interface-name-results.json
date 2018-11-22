@@ -1,0 +1,212 @@
+[
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "pkg/utils/utils.go",
+   "Line": 113,
+   "Snippet": "}\n\ntype Displayable interface {\n\tGetDisplayStrings() []string\n}\n\n// RenderList takes a slice of items, confirms they implement the Displayable"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/yaml.v2/yaml.go",
+   "Line": 42,
+   "Snippet": "// If an error is returned by MarshalYAML, the marshaling procedure stops\n// and returns with the provided error.\ntype Marshaler interface {\n\tMarshalYAML() (interface{}, error)\n}\n\n// Unmarshal decodes the first document found within the in byte slice"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/yaml.v2/yaml.go",
+   "Line": 32,
+   "Snippet": "// YAML value into a field or variable. It is safe to call the unmarshal\n// function parameter more than once if necessary.\ntype Unmarshaler interface {\n\tUnmarshalYAML(unmarshal func(interface{}) error) error\n}\n\n// The Marshaler interface may be implemented by types to customize their"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/go-ini/ini/ini.go",
+   "Line": 84,
+   "Snippet": "\n// dataSource is an interface that returns object which can be read and closed.\ntype dataSource interface {\n\tReadCloser() (io.ReadCloser, error)\n}\n\n// sourceFile represents an object that contains content on the local file system."
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/spf13/afero/lstater.go",
+   "Line": 25,
+   "Snippet": "// Else it will call Stat.\n// In addtion to the FileInfo, it will return a boolean telling whether Lstat was called or not.\ntype Lstater interface {\n\tLstatIfPossible(name string) (os.FileInfo, bool, error)\n}\n"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/spf13/viper/flags.go",
+   "Line": 7,
+   "Snippet": "// FlagValueSet is an interface that users can implement\n// to bind a set of flags to viper.\ntype FlagValueSet interface {\n\tVisitAll(fn func(FlagValue))\n}\n\n// FlagValue is an interface that users can implement"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/src-d/gcfg/go1_0.go",
+   "Line": 5,
+   "Snippet": "package gcfg\n\ntype textUnmarshaler interface {\n\tUnmarshalText(text []byte) error\n}\n"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-billy.v4/fs.go",
+   "Line": 181,
+   "Snippet": "\n// Capable interface can return the available features of a filesystem.\ntype Capable interface {\n\t// Capabilities returns the capabilities of a filesystem in bit flags.\n\tCapabilities() Capability\n}\n\n// Capabilities returns the features supported by a filesystem. If the FS"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/stretchr/testify/assert/assertions.go",
+   "Line": 26,
+   "Snippet": "\n// TestingT is an interface wrapper around *testing.T\ntype TestingT interface {\n\tErrorf(format string, args ...interface{})\n}\n\n// ComparisonAssertionFunc is a common function prototype when comparing two values.  Can be useful"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/stretchr/testify/assert/assertions.go",
+   "Line": 1392,
+   "Snippet": "}\n\ntype tHelper interface {\n\tHelper()\n}\n"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/emirpasic/gods/containers/serialization.go",
+   "Line": 14,
+   "Snippet": "\n// JSONDeserializer provides JSON deserialization\ntype JSONDeserializer interface {\n\t// FromJSON populates containers's elements from the input JSON representation.\n\tFromJSON([]byte) error\n}\n"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/emirpasic/gods/containers/serialization.go",
+   "Line": 8,
+   "Snippet": "\n// JSONSerializer provides JSON serialization\ntype JSONSerializer interface {\n\t// ToJSON outputs the JSON representation of containers's elements.\n\tToJSON() ([]byte, error)\n}\n\n// JSONDeserializer provides JSON deserialization"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/operation.go",
+   "Line": 15,
+   "Snippet": "// operation represents an operation on the dictionary during encoding or\n// decoding.\ntype operation interface {\n\tLen() int\n}\n\n// rep represents a repetition at the given distance and the given length"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-billy.v4/util/util.go",
+   "Line": 27,
+   "Snippet": "}\n\ntype removerAll interface {\n\tRemoveAll(string) error\n}\n\nfunc removeAll(fs billy.Basic, path string) error {"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/service/s3/customizations.go",
+   "Line": 62,
+   "Snippet": "// sseCustomerKeyGetter is an accessor interface to grab the \"SSECustomerKey\"\n// field from an S3 type.\ntype sseCustomerKeyGetter interface {\n\tgetSSECustomerKey() string\n}\n\n// copySourceSSECustomerKeyGetter is an accessor interface to grab the"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/service/s3/customizations.go",
+   "Line": 68,
+   "Snippet": "// copySourceSSECustomerKeyGetter is an accessor interface to grab the\n// \"CopySourceSSECustomerKey\" field from an S3 type.\ntype copySourceSSECustomerKeyGetter interface {\n\tgetCopySourceSSECustomerKey() string\n}\n"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/service/s3/customizations.go",
+   "Line": 56,
+   "Snippet": "// bucketGetter is an accessor interface to grab the \"Bucket\" field from\n// an S3 type.\ntype bucketGetter interface {\n\tgetBucket() string\n}\n\n// sseCustomerKeyGetter is an accessor interface to grab the \"SSECustomerKey\""
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/service/s3/api.go",
+   "Line": 19775,
+   "Snippet": "//     * RecordsEvent\n//     * StatsEvent\ntype SelectObjectContentEventStreamEvent interface {\n\teventSelectObjectContentEventStream()\n}\n\n// SelectObjectContentEventStreamReader provides the interface for reading EventStream"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/endpoints/endpoints.go",
+   "Line": 123,
+   "Snippet": "// Use this interface with DefaultResolver and DecodeModels to get the list of\n// Partitions.\ntype EnumPartitions interface {\n\tPartitions() []Partition\n}\n\n// RegionsForService returns a map of regions for the partition and service."
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/endpoints/endpoints.go",
+   "Line": 84,
+   "Snippet": "// A Resolver provides the interface for functionality to resolve endpoints.\n// The build in Partition and DefaultResolver return value satisfy this interface.\ntype Resolver interface {\n\tEndpointFor(service, region string, opts ...func(*Options)) (ResolvedEndpoint, error)\n}\n\n// ResolverFunc is a helper utility that wraps a function so it satisfies the"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/client/client.go",
+   "Line": 28,
+   "Snippet": "// ConfigProvider provides a generic way for a service client to receive\n// the ClientConfig without circular dependencies.\ntype ConfigProvider interface {\n\tClientConfig(serviceName string, cfgs ...*aws.Config) Config\n}\n\n// ConfigNoResolveEndpointProvider same as ConfigProvider except it will not"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/client/client.go",
+   "Line": 35,
+   "Snippet": "// resolve the endpoint automatically. The service client's endpoint must be\n// provided via the aws.Config.Endpoint field.\ntype ConfigNoResolveEndpointProvider interface {\n\tClientConfigNoResolveEndpoint(cfgs ...*aws.Config) Config\n}\n\n// A Client implements the base client request and response handling"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/request/validation.go",
+   "Line": 25,
+   "Snippet": "// input values that external code can use to determine if a type's values\n// are valid.\ntype Validator interface {\n\tValidate() error\n}\n\n// An ErrInvalidParams provides wrapping of invalid parameter errors found when"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/private/protocol/payload.go",
+   "Line": 15,
+   "Snippet": "// PayloadUnmarshaler provides the interface for unmarshaling a payload's\n// reader into a SDK shape.\ntype PayloadUnmarshaler interface {\n\tUnmarshalPayload(io.Reader, interface{}) error\n}\n\n// HandlerPayloadUnmarshal implements the PayloadUnmarshaler from a"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/private/protocol/payload.go",
+   "Line": 47,
+   "Snippet": "// PayloadMarshaler provides the interface for marshaling a SDK shape into and\n// io.Writer.\ntype PayloadMarshaler interface {\n\tMarshalPayload(io.Writer, interface{}) error\n}\n\n// HandlerPayloadMarshal implements the PayloadMarshaler from a HandlerList."
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/golang.org/x/crypto/openpgp/packet/packet.go",
+   "Line": 257,
+   "Snippet": "// Packet represents an OpenPGP packet. Users are expected to try casting\n// instances of this interface to specific packet types.\ntype Packet interface {\n\tparse(io.Reader) error\n}\n\n// consumeAll reads from the given Reader until error, returning the number of"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/storer/object.go",
+   "Line": 55,
+   "Snippet": "// Transactioner is a optional method for ObjectStorer, it enable transaction\n// base write and read operations in the storage\ntype Transactioner interface {\n\t// Begin starts a transaction.\n\tBegin() Transaction\n}\n\n// LooseObjectStorer is an optional interface for managing \"loose\""
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/signer/v4/header_rules.go",
+   "Line": 14,
+   "Snippet": "// rule interface allows for more flexible rules and just simply\n// checks whether or not a value adheres to that rule\ntype rule interface {\n\tIsValid(value string) bool\n}\n\n// IsValid will iterate through all rules and see if any rules"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/transport/ssh/common.go",
+   "Line": 23,
+   "Snippet": "var DefaultSSHConfig sshConfig = ssh_config.DefaultUserSettings\n\ntype sshConfig interface {\n\tGet(alias, key string) string\n}\n\n// NewClient creates a new SSH client with an optional *ssh.ClientConfig."
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/format/gitignore/pattern.go",
+   "Line": 27,
+   "Snippet": "\n// Pattern defines a single gitignore pattern.\ntype Pattern interface {\n\t// Match matches the given path to the pattern.\n\tMatch(path []string, isDir bool) MatchResult\n}\n\ntype pattern struct {"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/private/protocol/eventstream/eventstreamapi/api.go",
+   "Line": 14,
+   "Snippet": "// Unmarshaler provides the interface for unmarshaling a EventStream\n// message into a SDK type.\ntype Unmarshaler interface {\n\tUnmarshalEvent(protocol.PayloadUnmarshaler, eventstream.Message) error\n}\n\n// EventStream headers with specific meaning to async API functionality."
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/transport/internal/common/common.go",
+   "Line": 70,
+   "Snippet": "\n// CommandKiller expands the Command interface, enableing it for being killed.\ntype CommandKiller interface {\n\t// Kill and close the session whatever the state it is. It will block until\n\t// the command is terminated.\n\tKill() error\n}\n\ntype client struct {"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/repository.go",
+   "Line": 95,
+   "Snippet": "\nfunc setWorktreeAndStoragePaths(r *Repository, worktree billy.Filesystem) error {\n\ttype fsBased interface {\n\t\tFilesystem() billy.Filesystem\n\t}\n\n\t// .git file is only created if the storage is file based and the file"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/private/protocol/eventstream/decode.go",
+   "Line": 147,
+   "Snippet": "\nfunc decodeUint8(r io.Reader) (uint8, error) {\n\ttype byteReader interface {\n\t\tReadByte() (byte, error)\n\t}\n\n\tif br, ok := r.(byteReader); ok {"
+  },
+  {
+   "Comment": "If an interface contains only one method, the method name should appear \nat the beginning of the interface name. Eg. interface \"Reader\" with method \"Read()\"\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/private/protocol/eventstream/header_value.go",
+   "Line": 110,
+   "Snippet": "\tr.Len = uint16(len(v))\n\n\ttype stringWriter interface {\n\t\tWriteString(string) (int, error)\n\t}\n\n\terr := binaryWriteFields(w, binary.BigEndian,"
+  }
+ ]

@@ -1,0 +1,644 @@
+[
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (TestOSCommandQuoteDoubleQuote) being declared.\n",
+   "Filename": "pkg/commands/os_test.go",
+   "Line": 281,
+   "Snippet": "}\n\n// TestOSCommandQuoteSingleQuote tests the quote function with \" quotes explicitly for Linux\nfunc TestOSCommandQuoteDoubleQuote(t *testing.T) {\n\tosCommand := newDummyOSCommand()"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (OpenLink) being declared.\n",
+   "Filename": "pkg/commands/os.go",
+   "Line": 112,
+   "Snippet": "}\n\n// OpenFile opens a file with the given\nfunc (c *OSCommand) OpenLink(link string) error {\n\tcommandTemplate := c.Config.GetUserConfig().GetString(\"os.openLinkCommand\")"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (MapToWithMapper) being declared.\n",
+   "Filename": "vendor/github.com/go-ini/ini/struct.go",
+   "Line": 312,
+   "Snippet": "}\n\n// MapTo maps data sources to given struct with name mapper.\nfunc MapToWithMapper(v interface{}, mapper NameMapper, source interface{}, others ...interface{}) error {\n\tcfg, err := Load(source, others...)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (StrictMapTo) being declared.\n",
+   "Filename": "vendor/github.com/go-ini/ini/struct.go",
+   "Line": 306,
+   "Snippet": "}\n\n// MapTo maps file to given struct in strict mode,\n// which returns all possible error including value parsing error.\nfunc (f *File) StrictMapTo(v interface{}) error {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (ReflectFromWithMapper) being declared.\n",
+   "Filename": "vendor/github.com/go-ini/ini/struct.go",
+   "Line": 503,
+   "Snippet": "}\n\n// ReflectFrom reflects data sources from given struct with name mapper.\nfunc ReflectFromWithMapper(cfg *File, v interface{}, mapper NameMapper) error {\n\tcfg.NameMapper = mapper"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (StrictMapTo) being declared.\n",
+   "Filename": "vendor/github.com/go-ini/ini/struct.go",
+   "Line": 286,
+   "Snippet": "}\n\n// MapTo maps section to given struct in strict mode,\n// which returns all possible error including value parsing error.\nfunc (s *Section) StrictMapTo(v interface{}) error {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Sections) being declared.\n",
+   "Filename": "vendor/github.com/go-ini/ini/file.go",
+   "Line": 141,
+   "Snippet": "}\n\n// Section returns list of Section.\nfunc (f *File) Sections() []*Section {\n\tif f.BlockMode {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (LogThreshold) being declared.\n",
+   "Filename": "vendor/github.com/spf13/jwalterweatherman/default_notepad.go",
+   "Line": 79,
+   "Snippet": "}\n\n// Level returns the current global log threshold.\nfunc LogThreshold() Threshold {\n\treturn defaultNotepad.logThreshold"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetLogThreshold) being declared.\n",
+   "Filename": "vendor/github.com/spf13/jwalterweatherman/notepad.go",
+   "Line": 133,
+   "Snippet": "}\n\n// GetStdoutThreshold returns the defined Treshold for the log logger.\nfunc (n *Notepad) GetLogThreshold() Threshold {\n\treturn n.logThreshold"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (StdoutThreshold) being declared.\n",
+   "Filename": "vendor/github.com/spf13/jwalterweatherman/default_notepad.go",
+   "Line": 84,
+   "Snippet": "}\n\n// Level returns the current global output threshold.\nfunc StdoutThreshold() Threshold {\n\treturn defaultNotepad.stdoutThreshold"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetLogThreshold) being declared.\n",
+   "Filename": "vendor/github.com/spf13/jwalterweatherman/default_notepad.go",
+   "Line": 89,
+   "Snippet": "}\n\n// GetStdoutThreshold returns the defined Treshold for the log logger.\nfunc GetLogThreshold() Threshold {\n\treturn defaultNotepad.GetLogThreshold()"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Exists) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 311,
+   "Snippet": "}\n\n// Check if a file or directory exists.\nfunc Exists(fs Fs, path string) (bool, error) {\n\t_, err := fs.Stat(path)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (UnicodeSanitize) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 135,
+   "Snippet": "}\n\n// Rewrite string to remove non-standard path characters\nfunc UnicodeSanitize(s string) string {\n\tsource := []rune(s)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (FileContainsAnyBytes) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 190,
+   "Snippet": "}\n\n// Check if a file contains any of the specified byte slices.\nfunc FileContainsAnyBytes(fs Fs, filename string, subslices [][]byte) (bool, error) {\n\tf, err := fs.Open(filename)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SafeWriteReader) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 63,
+   "Snippet": "}\n\n// Same as WriteReader but checks to see if file/directory already exists.\nfunc (a Afero) SafeWriteReader(path string, r io.Reader) (err error) {\n\treturn SafeWriteReader(a.Fs, path, r)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (FileContainsBytes) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 175,
+   "Snippet": "}\n\n// Check if a file contains a specified byte slice.\nfunc FileContainsBytes(fs Fs, filename string, subslice []byte) (bool, error) {\n\tf, err := fs.Open(filename)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (NeuterAccents) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 159,
+   "Snippet": "}\n\n// Transform characters with accents into plain forms.\nfunc NeuterAccents(s string) string {\n\tt := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WriteReader) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/util.go",
+   "Line": 35,
+   "Snippet": "const FilePathSeparator = string(filepath.Separator)\n\n// Takes a reader and a path and writes the content\nfunc (a Afero) WriteReader(path string, r io.Reader) (err error) {\n\treturn WriteReader(a.Fs, path, r)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Rename) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/copyOnWriteFs.go",
+   "Line": 130,
+   "Snippet": "}\n\n// Renaming files present only in the base layer is not permitted\nfunc (u *CopyOnWriteFs) Rename(oldname, newname string) error {\n\tb, err := u.isBaseFile(oldname)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Remove) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/copyOnWriteFs.go",
+   "Line": 142,
+   "Snippet": "}\n\n// Removing files present only in the base layer is not permitted. If\n// a file is present in the base layer and the overlay, only the overlay\n// will be removed."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Open) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/copyOnWriteFs.go",
+   "Line": 215,
+   "Snippet": "}\n\n// This function handles the 9 different possibilities caused\n// by the union which are the intersection of the following...\n//  layer: doesn't exist, exists as a file, and exists as a directory"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (RealPath) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/basepath.go",
+   "Line": 40,
+   "Snippet": "}\n\n// on a file outside the base path it returns the given file name and an error,\n// else the given file with the base path prepended\nfunc (b *BasePathFs) RealPath(name string) (path string, err error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (RegisterAlias) being declared.\n",
+   "Filename": "vendor/github.com/spf13/viper/viper.go",
+   "Line": 1067,
+   "Snippet": "}\n\n// Aliases provide another accessor for the same key.\n// This enables one to change a name without breaking the application\nfunc RegisterAlias(alias string, key string) { v.RegisterAlias(alias, key) }"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (HasChanged) being declared.\n",
+   "Filename": "vendor/github.com/spf13/viper/flags.go",
+   "Line": 39,
+   "Snippet": "}\n\n// HasChanges returns whether the flag has changes or not.\nfunc (p pflagValue) HasChanged() bool {\n\treturn p.flag.Changed"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Reset) being declared.\n",
+   "Filename": "vendor/github.com/spf13/viper/viper.go",
+   "Line": 224,
+   "Snippet": "}\n\n// Intended for testing, will reset all to default settings.\n// In the public interface for the viper package so applications\n// can use it in their testing as well."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (String) being declared.\n",
+   "Filename": "vendor/github.com/hashicorp/go-version/constraint.go",
+   "Line": 80,
+   "Snippet": "}\n\n// Returns the string format of the constraints\nfunc (cs Constraints) String() string {\n\tcsStr := make([]string, len(cs))"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithTime) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/entry.go",
+   "Line": 89,
+   "Snippet": "}\n\n// Overrides the time of the Entry.\nfunc (entry *Entry) WithTime(t time.Time) *Entry {\n\treturn \u0026Entry{Logger: entry.Logger, Data: entry.Data, Time: t}"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithFields) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/entry.go",
+   "Line": 77,
+   "Snippet": "}\n\n// Add a map of fields to the Entry.\nfunc (entry *Entry) WithFields(fields Fields) *Entry {\n\tdata := make(Fields, len(entry.Data)+len(fields))"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (String) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/entry.go",
+   "Line": 56,
+   "Snippet": "}\n\n// Returns the string representation from the reader and ultimately the\n// formatter.\nfunc (entry *Entry) String() (string, error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithField) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/entry.go",
+   "Line": 72,
+   "Snippet": "}\n\n// Add a single field to the Entry.\nfunc (entry *Entry) WithField(key string, value interface{}) *Entry {\n\treturn entry.WithFields(Fields{key: value})"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithError) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/entry.go",
+   "Line": 67,
+   "Snippet": "}\n\n// Add an error as single field (using the key defined in ErrorKey) to the Entry.\nfunc (entry *Entry) WithError(err error) *Entry {\n\treturn entry.WithField(ErrorKey, err)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithFields) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 100,
+   "Snippet": "}\n\n// Adds a struct of fields to the log entry. All it does is call `WithField` for\n// each `Field`.\nfunc (logger *Logger) WithFields(fields Fields) *Entry {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithError) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 108,
+   "Snippet": "}\n\n// Add an error as single field to the log entry.  All it does is call\n// `WithError` for the given `error`.\nfunc (logger *Logger) WithError(err error) *Entry {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithTime) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 116,
+   "Snippet": "}\n\n// Overrides the time of the log entry.\nfunc (logger *Logger) WithTime(t time.Time) *Entry {\n\tentry := logger.newEntry()"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (New) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 58,
+   "Snippet": "}\n\n// Creates a new logger. Configuration should be set by changing `Formatter`,\n// `Out` and `Hooks` directly on the default logger instance. You can also just\n// instantiate your own:"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WithField) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 91,
+   "Snippet": "}\n\n// Adds a field to the log entry, note that it doesn't log until you call\n// Debug, Print, Info, Warn, Error, Fatal or Panic. It only creates a log entry.\n// If you want multiple fields, use `WithFields`."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SetNoLock) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logger.go",
+   "Line": 312,
+   "Snippet": "}\n\n//When file is opened with appending mode, it's safe to\n//write concurrently to a file (within 4k message on Linux).\n//In these cases user can choose to disable the lock."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (String) being declared.\n",
+   "Filename": "vendor/github.com/sirupsen/logrus/logrus.go",
+   "Line": 15,
+   "Snippet": "type Level uint32\n\n// Convert the Level to a string. E.g. PanicLevel becomes \"panic\".\nfunc (level Level) String() string {\n\tswitch level {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PlainOpenWithOptions) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/repository.go",
+   "Line": 238,
+   "Snippet": "}\n\n// PlainOpen opens a git repository from the given path. It detects if the\n// repository is bare or a normal one. If the path doesn't contain a valid\n// repository ErrRepositoryNotExists is returned"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GithubToken) being declared.\n",
+   "Filename": "vendor/github.com/tcnksm/go-gitconfig/gitconfig.go",
+   "Line": 82,
+   "Snippet": "}\n\n// Github extracts github token from `Entire gitconfig`.\n// This is same as Entire(\"github.token\")\nfunc GithubToken() (string, error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Name) being declared.\n",
+   "Filename": "vendor/github.com/spf13/afero/mem/file.go",
+   "Line": 278,
+   "Snippet": "}\n\n// Implements os.FileInfo\nfunc (s *FileInfo) Name() string {\n\ts.Lock()"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Len) being declared.\n",
+   "Filename": "vendor/github.com/golang-collections/collections/stack/stack.go",
+   "Line": 17,
+   "Snippet": "\treturn \u0026Stack{nil,0}\r\n}\r\n// Return the number of items in the stack\r\nfunc (this *Stack) Len() int {\r\n\treturn this.length\r"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Peek) being declared.\n",
+   "Filename": "vendor/github.com/golang-collections/collections/stack/stack.go",
+   "Line": 21,
+   "Snippet": "\treturn this.length\r\n}\r\n// View the top item on the stack\r\nfunc (this *Stack) Peek() interface{} {\r\n\tif this.length == 0 {\r"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (New) being declared.\n",
+   "Filename": "vendor/github.com/golang-collections/collections/stack/stack.go",
+   "Line": 13,
+   "Snippet": "\t}\t\r\n)\r\n// Create a new stack\r\nfunc New() *Stack {\r\n\treturn \u0026Stack{nil,0}\r"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Decode) being declared.\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/treecodecs.go",
+   "Line": 37,
+   "Snippet": "}\n\n// Decodes uses the range decoder to decode a fixed-bit-size value. Errors may\n// be caused by the range decoder.\nfunc (tc *treeCodec) Decode(d *rangeDecoder) (v uint32, err error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Decode) being declared.\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/treecodecs.go",
+   "Line": 83,
+   "Snippet": "}\n\n// Decodes uses the range decoder to decode a fixed-bit-size value. Errors\n// returned by the range decoder will be returned.\nfunc (tc *treeReverseCodec) Decode(d *rangeDecoder) (v uint32, err error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Write) being declared.\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/bintree.go",
+   "Line": 100,
+   "Snippet": "}\n\n// Writes writes a sequence of bytes into the binTree structure.\nfunc (t *binTree) Write(p []byte) (n int, err error) {\n\tfor _, c := range p {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Reset) being declared.\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/buffer.go",
+   "Line": 31,
+   "Snippet": "}\n\n// Resets the buffer. The front and rear index are set to zero.\nfunc (b *buffer) Reset() {\n\tb.front = 0"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Write) being declared.\n",
+   "Filename": "vendor/github.com/ulikunitz/xz/lzma/writer2.go",
+   "Line": 137,
+   "Snippet": "var errClosed = errors.New(\"lzma: writer closed\")\n\n// Writes data to LZMA2 stream. Note that written data will be buffered.\n// Use Flush or Close to ensure that data is written to the underlying\n// writer."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Len) being declared.\n",
+   "Filename": "vendor/github.com/src-d/gcfg/scanner/errors.go",
+   "Line": 50,
+   "Snippet": "func (p *ErrorList) Reset() { *p = (*p)[0:0] }\n\n// ErrorList implements the sort Interface.\nfunc (p ErrorList) Len() int      { return len(p) }\nfunc (p ErrorList) Swap(i, j int) { p[i], p[j] = p[j], p[i] }"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Error) being declared.\n",
+   "Filename": "vendor/github.com/src-d/gcfg/scanner/errors.go",
+   "Line": 89,
+   "Snippet": "}\n\n// An ErrorList implements the error interface.\nfunc (p ErrorList) Error() string {\n\tswitch len(p) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WriteContextDiff) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 657,
+   "Snippet": "type ContextDiff UnifiedDiff\n\n// Compare two sequences of lines; generate the delta as a context diff.\n//\n// Context diffs are a compact way of showing line changes and a few"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetGroupedOpCodes) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 409,
+   "Snippet": "}\n\n// Isolate change clusters by eliminating ranges with no changes.\n//\n// Return a generator of groups with up to n lines of context."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetContextDiffString) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 759,
+   "Snippet": "}\n\n// Like WriteContextDiff but returns the diff a string.\nfunc GetContextDiffString(diff ContextDiff) (string, error) {\n\tw := \u0026bytes.Buffer{}"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SetSeq1) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 120,
+   "Snippet": "}\n\n// Set the first sequence to be compared. The second sequence to be compared is\n// not changed.\n//"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (WriteUnifiedDiff) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 540,
+   "Snippet": "}\n\n// Compare two sequences of lines; generate the delta as a unified diff.\n//\n// Unified diffs are a compact way of showing line changes and a few"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Ratio) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 454,
+   "Snippet": "}\n\n// Return a measure of the sequences' similarity (float in [0,1]).\n//\n// Where T is the total number of elements in both sequences, and"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (QuickRatio) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 473,
+   "Snippet": "}\n\n// Return an upper bound on ratio() relatively quickly.\n//\n// This isn't defined beyond that it is an upper bound on .Ratio(), and"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetUnifiedDiffString) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 634,
+   "Snippet": "}\n\n// Like WriteUnifiedDiff but returns the diff a string.\nfunc GetUnifiedDiffString(diff UnifiedDiff) (string, error) {\n\tw := \u0026bytes.Buffer{}"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SetSeqs) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 114,
+   "Snippet": "}\n\n// Set two sequences to be compared.\nfunc (m *SequenceMatcher) SetSeqs(a, b []string) {\n\tm.SetSeq1(a)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetOpCodes) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 358,
+   "Snippet": "}\n\n// Return list of 5-tuples describing how to turn a into b.\n//\n// Each tuple is of the form (tag, i1, i2, j1, j2).  The first tuple"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (GetMatchingBlocks) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 294,
+   "Snippet": "}\n\n// Return list of triples describing matching subsequences.\n//\n// Each triple is of the form (i, j, n), and means that"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (RealQuickRatio) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 505,
+   "Snippet": "}\n\n// Return an upper bound on ratio() very quickly.\n//\n// This isn't defined beyond that it is an upper bound on .Ratio(), and"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SplitLines) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 766,
+   "Snippet": "}\n\n// Split a string on \"\\n\" while preserving them. The output can be used\n// as input for UnifiedDiff and ContextDiff structures.\nfunc SplitLines(s string) []string {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (SetSeq2) being declared.\n",
+   "Filename": "vendor/github.com/pmezard/go-difflib/difflib/difflib.go",
+   "Line": 138,
+   "Snippet": "}\n\n// Set the second sequence to be compared. The first sequence to be compared is\n// not changed.\nfunc (m *SequenceMatcher) SetSeq2(b []string) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (RemoveFunc) being declared.\n",
+   "Filename": "vendor/golang.org/x/text/transform/transform.go",
+   "Line": 496,
+   "Snippet": "}\n\n// Deprecated: use runes.Remove instead.\nfunc RemoveFunc(f func(r rune) bool) Transformer {\n\treturn removeF(f)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Variants) being declared.\n",
+   "Filename": "vendor/golang.org/x/text/language/language.go",
+   "Line": 398,
+   "Snippet": "}\n\n// Variant returns the variants specified explicitly for this language tag.\n// or nil if no variant was specified.\nfunc (t Tag) Variants() []Variant {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PtraceAttach) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_darwin.go",
+   "Line": 80,
+   "Snippet": "}\n\n//sys   ptrace(request int, pid int, addr uintptr, data uintptr) (err error)\nfunc PtraceAttach(pid int) (err error) { return ptrace(PT_ATTACH, pid, 0, 0) }\nfunc PtraceDetach(pid int) (err error) { return ptrace(PT_DETACH, pid, 0, 0) }"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Pipe) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_openbsd.go",
+   "Line": 46,
+   "Snippet": "}\n\n//sysnb pipe(p *[2]_C_int) (err error)\nfunc Pipe(p []int) (err error) {\n\tif len(p) != 2 {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Getdirentries) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_openbsd.go",
+   "Line": 58,
+   "Snippet": "}\n\n//sys getdents(fd int, buf []byte) (n int, err error)\nfunc Getdirentries(fd int, buf []byte, basep *uintptr) (n int, err error) {\n\treturn getdents(fd, buf)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Getdirentries) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_netbsd.go",
+   "Line": 105,
+   "Snippet": "}\n\n//sys getdents(fd int, buf []byte) (n int, err error)\nfunc Getdirentries(fd int, buf []byte, basep *uintptr) (n int, err error) {\n\treturn getdents(fd, buf)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Pipe) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_netbsd.go",
+   "Line": 96,
+   "Snippet": "}\n\n//sysnb pipe() (fd1 int, fd2 int, err error)\nfunc Pipe(p []int) (err error) {\n\tif len(p) != 2 {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Pread) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_dragonfly.go",
+   "Line": 70,
+   "Snippet": "}\n\n//sys\textpread(fd int, p []byte, flags int, offset int64) (n int, err error)\nfunc Pread(fd int, p []byte, offset int64) (n int, err error) {\n\treturn extpread(fd, p, 0, offset)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Pwrite) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_dragonfly.go",
+   "Line": 75,
+   "Snippet": "}\n\n//sys\textpwrite(fd int, p []byte, flags int, offset int64) (n int, err error)\nfunc Pwrite(fd int, p []byte, offset int64) (n int, err error) {\n\treturn extpwrite(fd, p, 0, offset)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Gettimeofday) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_darwin_arm.go",
+   "Line": 20,
+   "Snippet": "}\n\n//sysnb\tgettimeofday(tp *Timeval) (sec int32, usec int32, err error)\nfunc Gettimeofday(tv *Timeval) (err error) {\n\t// The tv passed to gettimeofday must be non-nil"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Gettimeofday) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_darwin_arm64.go",
+   "Line": 22,
+   "Snippet": "}\n\n//sysnb\tgettimeofday(tp *Timeval) (sec int64, usec int32, err error)\nfunc Gettimeofday(tv *Timeval) (err error) {\n\t// The tv passed to gettimeofday must be non-nil"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Futimes) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_solaris.go",
+   "Line": 350,
+   "Snippet": "}\n\n// Solaris doesn't have an futimes function because it allows NULL to be\n// specified as the path for futimesat. However, Go doesn't like\n// NULL-style string interfaces, so this simple wrapper is provided."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Gettimeofday) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_darwin_amd64.go",
+   "Line": 22,
+   "Snippet": "}\n\n//sysnb\tgettimeofday(tp *Timeval) (sec int64, usec int32, err error)\nfunc Gettimeofday(tv *Timeval) (err error) {\n\t// The tv passed to gettimeofday must be non-nil"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Gettimeofday) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/unix/syscall_darwin_386.go",
+   "Line": 22,
+   "Snippet": "}\n\n//sysnb\tgettimeofday(tp *Timeval) (sec int32, usec int32, err error)\nfunc Gettimeofday(tv *Timeval) (err error) {\n\t// The tv passed to gettimeofday must be non-nil"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Fchdir) being declared.\n",
+   "Filename": "vendor/golang.org/x/sys/windows/syscall_windows.go",
+   "Line": 1086,
+   "Snippet": "}\n\n// TODO(brainman): fix all needed for os\nfunc Fchdir(fd Handle) (err error)             { return syscall.EWINDOWS }\nfunc Link(oldpath, newpath string) (err error) { return syscall.EWINDOWS }"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (KeysByIdUsage) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/openpgp/keys.go",
+   "Line": 186,
+   "Snippet": "}\n\n// KeysByIdAndUsage returns the set of keys with the given id that also meet\n// the key usage given by requiredUsage.  The requiredUsage is expressed as\n// the bitwise-OR of packet.KeyFlag* values."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (ParseAuthorizedKey) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ssh/keys.go",
+   "Line": 162,
+   "Snippet": "}\n\n// ParseAuthorizedKeys parses a public key from an authorized_keys\n// file used in OpenSSH according to the sshd(8) manual page.\nfunc ParseAuthorizedKey(in []byte) (out PublicKey, comment string, options []string, rest []byte, err error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Error) being declared.\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/endpoints/endpoints.go",
+   "Line": 398,
+   "Snippet": "}\n\n// String returns the string representation of the error.\nfunc (e UnknownServiceError) Error() string {\n\textra := fmt.Sprintf(\"partition: %q, service: %q\","
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Error) being declared.\n",
+   "Filename": "vendor/github.com/aws/aws-sdk-go/aws/endpoints/endpoints.go",
+   "Line": 436,
+   "Snippet": "}\n\n// String returns the string representation of the error.\nfunc (e UnknownEndpointError) Error() string {\n\textra := fmt.Sprintf(\"partition: %q, service: %q, region: %q\","
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Part) being declared.\n",
+   "Filename": "vendor/golang.org/x/text/internal/ucd/ucd.go",
+   "Line": 72,
+   "Snippet": ")\n\n// The Part option register a handler for lines starting with a '@'. The text\n// after a '@' is available as the first field. Comments are handled as usual.\nfunc Part(f func(p *Parser)) Option {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (CommentHandler) being declared.\n",
+   "Filename": "vendor/golang.org/x/text/internal/ucd/ucd.go",
+   "Line": 80,
+   "Snippet": "}\n\n// The CommentHandler option passes comments that are on a line by itself to\n// a given handler.\nfunc CommentHandler(f func(s string)) Option {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (HashToHashId) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/openpgp/s2k/s2k.go",
+   "Line": 265,
+   "Snippet": "}\n\n// HashIdToHash returns an OpenPGP hash id which corresponds the given Hash.\nfunc HashToHashId(h crypto.Hash) (id byte, ok bool) {\n\tfor _, m := range hashToHashIdMapping {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Next) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/openpgp/packet/opaque.go",
+   "Line": 70,
+   "Snippet": "}\n\n// Read the next OpaquePacket.\nfunc (or *OpaqueReader) Next() (op *OpaquePacket, err error) {\n\ttag, _, contents, err := readHeader(or.r)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Add) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ssh/agent/keyring.go",
+   "Line": 146,
+   "Snippet": "}\n\n// Insert adds a private key to the keyring. If a certificate\n// is given, that certificate is added as public key. Note that\n// any constraints given are ignored."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (Read) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ssh/knownhosts/knownhosts.go",
+   "Line": 391,
+   "Snippet": "}\n\n// The Read function parses file contents.\nfunc (db *hostKeyDB) Read(r io.Reader, filename string) error {\n\tscanner := bufio.NewScanner(r)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (IsHostAuthority) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ssh/knownhosts/knownhosts.go",
+   "Line": 145,
+   "Snippet": "}\n\n// IsAuthorityForHost can be used as a callback in ssh.CertChecker\nfunc (db *hostKeyDB) IsHostAuthority(remote ssh.PublicKey, address string) bool {\n\th, p, err := net.SplitHostPort(address)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (DiffTreeContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/utils/merkletrie/difftree.go",
+   "Line": 269,
+   "Snippet": "}\n\n// DiffTree calculates the list of changes between two merkletries.  It\n// uses the provided hashEqual callback to compare noders.\n// Error will be returned if context expires"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PatchContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/change.go",
+   "Line": 151,
+   "Snippet": "}\n\n// Patch returns a Patch with all the changes in chunks. This\n// representation can be used to create several diff outputs.\n// If context expires, an non-nil error will be returned"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PatchContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/change.go",
+   "Line": 88,
+   "Snippet": "}\n\n// Patch returns a Patch with all the file changes in chunks. This\n// representation can be used to create several diff outputs.\n// If context expires, an non-nil error will be returned"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PatchContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/commit.go",
+   "Line": 79,
+   "Snippet": "}\n\n// Patch returns the Patch between the actual commit and the provided one.\n// Error will be return if context expires. Provided context must be non-nil\nfunc (c *Commit) PatchContext(ctx context.Context, to *Commit) (*Patch, error) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (PatchContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/tree.go",
+   "Line": 311,
+   "Snippet": "}\n\n// Patch returns a slice of Patch objects with all the changes between trees\n// in chunks. This representation can be used to create several diff outputs.\n// If context expires, an error will be returned"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (DiffContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/tree.go",
+   "Line": 298,
+   "Snippet": "}\n\n// Diff returns a list of changes between this tree and the provided one\n// Error will be returned if context expires\n// Provided context must be non nil"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (DecodeBlob) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/blob.go",
+   "Line": 31,
+   "Snippet": "}\n\n// DecodeObject decodes an encoded object into a *Blob.\nfunc DecodeBlob(o plumbing.EncodedObject) (*Blob, error) {\n\tb := \u0026Blob{}"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (NumChildren) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/treenoder.go",
+   "Line": 126,
+   "Snippet": "}\n\n// len(t.tree.Entries) != the number of elements walked by treewalker\n// for some reason because of empty directories, submodules, etc, so we\n// have to walk here."
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (DiffTreeContext) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/object/difftree.go",
+   "Line": 17,
+   "Snippet": "}\n\n// DiffTree compares the content and mode of the blobs found via two\n// tree objects. Provided context must be non-nil.\n// An error will be return if context expires"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (ScReduce) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ed25519/internal/edwards25519/edwards25519.go",
+   "Line": 1451,
+   "Snippet": "}\n\n// Input:\n//   s[0]+256*s[1]+...+256^63*s[63] = s\n//"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (FeCMove) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ed25519/internal/edwards25519/edwards25519.go",
+   "Line": 59,
+   "Snippet": "}\n\n// Replace (f,g) with (g,g) if b == 1;\n// replace (f,g) with (f,g) if b == 0.\n//"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (ScMulAdd) being declared.\n",
+   "Filename": "vendor/golang.org/x/crypto/ed25519/internal/edwards25519/edwards25519.go",
+   "Line": 1018,
+   "Snippet": "// The scalars are GF(2^252 + 27742317777372353535851937790883648493).\n\n// Input:\n//   a[0]+256*a[1]+...+256^31*a[31] = a\n//   b[0]+256*b[1]+...+256^31*b[31] = b"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (NewReferenceUpdateRequest) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/protocol/packp/updreq.go",
+   "Line": 30,
+   "Snippet": "}\n\n// New returns a pointer to a new ReferenceUpdateRequest value.\nfunc NewReferenceUpdateRequest() *ReferenceUpdateRequest {\n\treturn \u0026ReferenceUpdateRequest{"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (LookupOffset) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/format/packfile/index.go",
+   "Line": 99,
+   "Snippet": "}\n\n// LookupHash looks an entry up by its offset in the packfile. An idxfile.Entry\n// is returned and a bool, which is true if it was found or false if it wasn't.\nfunc (idx *Index) LookupOffset(offset uint64) (*idxfile.Entry, bool) {"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (RemoveOption) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/plumbing/format/config/section.go",
+   "Line": 86,
+   "Snippet": "}\n\n// Remove an option with the specified key. The updated Section is returned.\nfunc (s *Section) RemoveOption(key string) *Section {\n\ts.Options = s.Options.withoutOption(key)"
+  },
+  {
+   "Comment": "The first sentence should be a one-sentence summary that starts with the name (ForEachObjectHash) being declared.\n",
+   "Filename": "vendor/gopkg.in/src-d/go-git.v4/storage/filesystem/dotgit/dotgit.go",
+   "Line": 240,
+   "Snippet": "}\n\n// Objects returns a slice with the hashes of objects found under the\n// .git/objects/ directory.\nfunc (d *DotGit) ForEachObjectHash(fun func(plumbing.Hash) error) error {"
+  }
+ ]
