@@ -116,7 +116,7 @@ func PatchDelta(src, delta []byte) ([]byte, error) {
 	return dest, nil
 }
 
-// Decodes a number encoded as an unsigned LEB128 at the start of some
+// decodeLEB128 Decodes a number encoded as an unsigned LEB128 at the start of some
 // binary data and returns the decoded number and the rest of the
 // stream.
 //

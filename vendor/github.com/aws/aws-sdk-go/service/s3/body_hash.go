@@ -141,7 +141,7 @@ func copySeekableBody(dst io.Writer, src io.ReadSeeker) (int64, error) {
 	return n, nil
 }
 
-// Adds the x-amz-te: append_md5 header to the request. This requests the service
+// askForTxEncodingAppendMD5 Adds the x-amz-te: append_md5 header to the request. This requests the service
 // responds with a trailing MD5 checksum.
 //
 // Will not ask for append MD5 if disabled, the request is presigned or,

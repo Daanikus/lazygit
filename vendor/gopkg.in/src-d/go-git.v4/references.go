@@ -60,7 +60,7 @@ func sortCommits(l []*object.Commit) {
 	sort.Sort(s)
 }
 
-// Recursive traversal of the commit graph, generating a linear history of the
+// walkGraph Recursive traversal of the commit graph, generating a linear history of the
 // path.
 func walkGraph(result *[]*object.Commit, seen *map[plumbing.Hash]struct{}, current *object.Commit, path string) error {
 	// check and update seen
@@ -131,7 +131,7 @@ func parentsContainingPath(path string, c *object.Commit) ([]*object.Commit, err
 	}
 }
 
-// Returns an slice of the commits in "cs" that has the file "path", but with different
+// differentContents Returns an slice of the commits in "cs" that has the file "path", but with different
 // contents than what can be found in "c".
 func differentContents(path string, c *object.Commit, cs []*object.Commit) ([]*object.Commit, error) {
 	result := make([]*object.Commit, 0, len(cs))
@@ -159,7 +159,7 @@ func blobHash(path string, commit *object.Commit) (hash plumbing.Hash, found boo
 
 type contentsComparatorFn func(path string, a, b *object.Commit) (bool, error)
 
-// Returns a new slice of commits, with duplicates removed.  Expects a
+// removeComp Returns a new slice of commits, with duplicates removed.  Expects a
 // sorted commit list.  Duplication is defined according to "comp".  It
 // will always keep the first commit of a series of duplicated commits.
 func removeComp(path string, cs []*object.Commit, comp contentsComparatorFn) ([]*object.Commit, error) {

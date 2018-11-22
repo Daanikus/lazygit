@@ -711,7 +711,7 @@ func (ctx *signingCtx) isRequestSigned() bool {
 	return false
 }
 
-// unsign removes signing flags for both signed and presigned requests.
+// removePresign unsign removes signing flags for both signed and presigned requests.
 func (ctx *signingCtx) removePresign() {
 	ctx.Query.Del("X-Amz-Algorithm")
 	ctx.Query.Del("X-Amz-Signature")

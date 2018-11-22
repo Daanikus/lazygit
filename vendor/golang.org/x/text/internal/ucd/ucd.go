@@ -69,7 +69,7 @@ var (
 	KeepRanges Option = keepRanges
 )
 
-// The Part option register a handler for lines starting with a '@'. The text
+// Part The Part option register a handler for lines starting with a '@'. The text
 // after a '@' is available as the first field. Comments are handled as usual.
 func Part(f func(p *Parser)) Option {
 	return func(p *Parser) {
@@ -77,7 +77,7 @@ func Part(f func(p *Parser)) Option {
 	}
 }
 
-// The CommentHandler option passes comments that are on a line by itself to
+// CommentHandler The CommentHandler option passes comments that are on a line by itself to
 // a given handler.
 func CommentHandler(f func(s string)) Option {
 	return func(p *Parser) {

@@ -8,7 +8,7 @@ package unix
 
 import "syscall"
 
-//extern gettimeofday
+// realGettimeofday extern gettimeofday
 func realGettimeofday(*Timeval, *byte) int32
 
 func gettimeofday(tv *Timeval) (err syscall.Errno) {

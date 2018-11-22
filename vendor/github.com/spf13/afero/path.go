@@ -77,7 +77,7 @@ func walk(fs Fs, path string, info os.FileInfo, walkFn filepath.WalkFunc) error 
 	return nil
 }
 
-// if the filesystem supports it, use Lstat, else use fs.Stat
+// lstatIfPossible if the filesystem supports it, use Lstat, else use fs.Stat
 func lstatIfPossible(fs Fs, path string) (os.FileInfo, error) {
 	if lfs, ok := fs.(Lstater); ok {
 		fi, _, err := lfs.LstatIfPossible(path)

@@ -159,7 +159,7 @@ func ParseKnownHosts(in []byte) (marker string, hosts []string, pubKey PublicKey
 	return "", nil, nil, "", nil, io.EOF
 }
 
-// ParseAuthorizedKeys parses a public key from an authorized_keys
+// ParseAuthorizedKey parses a public key from an authorized_keys
 // file used in OpenSSH according to the sshd(8) manual page.
 func ParseAuthorizedKey(in []byte) (out PublicKey, comment string, options []string, rest []byte, err error) {
 	for len(in) > 0 {
@@ -900,7 +900,7 @@ func ParseDSAPrivateKey(der []byte) (*dsa.PrivateKey, error) {
 	}, nil
 }
 
-// Implemented based on the documentation at
+// parseOpenSSHPrivateKey Implemented based on the documentation at
 // https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.key
 func parseOpenSSHPrivateKey(key []byte) (crypto.PrivateKey, error) {
 	magic := append([]byte("openssh-key-v1"), 0)

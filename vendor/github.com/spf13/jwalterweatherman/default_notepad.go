@@ -76,17 +76,17 @@ func SetFlags(flags int) {
 	reloadDefaultNotepad()
 }
 
-// Level returns the current global log threshold.
+// LogThreshold Level returns the current global log threshold.
 func LogThreshold() Threshold {
 	return defaultNotepad.logThreshold
 }
 
-// Level returns the current global output threshold.
+// StdoutThreshold Level returns the current global output threshold.
 func StdoutThreshold() Threshold {
 	return defaultNotepad.stdoutThreshold
 }
 
-// GetStdoutThreshold returns the defined Treshold for the log logger.
+// GetLogThreshold returns the defined Treshold for the log logger.
 func GetLogThreshold() Threshold {
 	return defaultNotepad.GetLogThreshold()
 }

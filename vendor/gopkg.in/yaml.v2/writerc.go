@@ -1,13 +1,13 @@
 package yaml
 
-// Set the writer error and return false.
+// yaml_emitter_set_writer_error the writer error and return false.
 func yaml_emitter_set_writer_error(emitter *yaml_emitter_t, problem string) bool {
 	emitter.error = yaml_WRITER_ERROR
 	emitter.problem = problem
 	return false
 }
 
-// Flush the output buffer.
+// yaml_emitter_flush the output buffer.
 func yaml_emitter_flush(emitter *yaml_emitter_t) bool {
 	if emitter.write_handler == nil {
 		panic("write handler not set")

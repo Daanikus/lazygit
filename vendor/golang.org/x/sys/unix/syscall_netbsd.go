@@ -93,7 +93,7 @@ func nametomib(name string) (mib []_C_int, err error) {
 	return mib, nil
 }
 
-//sysnb pipe() (fd1 int, fd2 int, err error)
+// Pipe sysnb pipe() (fd1 int, fd2 int, err error)
 func Pipe(p []int) (err error) {
 	if len(p) != 2 {
 		return EINVAL
@@ -102,7 +102,7 @@ func Pipe(p []int) (err error) {
 	return
 }
 
-//sys getdents(fd int, buf []byte) (n int, err error)
+// Getdirentries sys getdents(fd int, buf []byte) (n int, err error)
 func Getdirentries(fd int, buf []byte, basep *uintptr) (n int, err error) {
 	return getdents(fd, buf)
 }
@@ -124,7 +124,7 @@ func Getwd() (string, error) {
 	return string(buf[:n]), nil
 }
 
-// TODO
+// sendfile TODO
 func sendfile(outfd int, infd int, offset *int64, count int) (written int, err error) {
 	return -1, ENOSYS
 }

@@ -120,7 +120,7 @@ func (gui *Gui) returnFocus(g *gocui.Gui, v *gocui.View) error {
 	return gui.switchFocus(g, v, previousView)
 }
 
-// pass in oldView = nil if you don't want to be able to return to your old view
+// switchFocus pass in oldView = nil if you don't want to be able to return to your old view
 func (gui *Gui) switchFocus(g *gocui.Gui, oldView, newView *gocui.View) error {
 	// we assume we'll never want to return focus to a confirmation panel i.e.
 	// we should never stack confirmation panels
@@ -220,7 +220,7 @@ func (gui *Gui) resetOrigin(v *gocui.View) error {
 	return v.SetOrigin(0, 0)
 }
 
-// if the cursor down past the last item, move it to the last line
+// correctCursor if the cursor down past the last item, move it to the last line
 func (gui *Gui) correctCursor(v *gocui.View) error {
 	cx, cy := v.Cursor()
 	ox, oy := v.Origin()
@@ -271,7 +271,7 @@ func (gui *Gui) renderOptionsMap(g *gocui.Gui, optionsMap map[string]string) err
 	return gui.renderString(g, "options", gui.optionsMapToString(optionsMap))
 }
 
-// TODO: refactor properly
+// getFilesView TODO: refactor properly
 // i'm so sorry but had to add this getBranchesView
 func (gui *Gui) getFilesView(g *gocui.Gui) *gocui.View {
 	v, _ := g.View("files")

@@ -34,7 +34,7 @@ func (tc *treeCodec) Encode(e *rangeEncoder, v uint32) (err error) {
 	return nil
 }
 
-// Decodes uses the range decoder to decode a fixed-bit-size value. Errors may
+// Decode uses the range decoder to decode a fixed-bit-size value. Errors may
 // be caused by the range decoder.
 func (tc *treeCodec) Decode(d *rangeDecoder) (v uint32, err error) {
 	m := uint32(1)
@@ -80,7 +80,7 @@ func (tc *treeReverseCodec) Encode(v uint32, e *rangeEncoder) (err error) {
 	return nil
 }
 
-// Decodes uses the range decoder to decode a fixed-bit-size value. Errors
+// Decode uses the range decoder to decode a fixed-bit-size value. Errors
 // returned by the range decoder will be returned.
 func (tc *treeReverseCodec) Decode(d *rangeDecoder) (v uint32, err error) {
 	m := uint32(1)

@@ -154,7 +154,7 @@ func (p *Parser) objectKey() ([]*ast.ObjectKey, error) {
 	}
 }
 
-// object parses any type of object, such as number, bool, string, object or
+// objectValue object parses any type of object, such as number, bool, string, object or
 // list.
 func (p *Parser) objectValue() (ast.Node, error) {
 	defer un(trace(p, "ParseObjectValue"))
@@ -306,7 +306,7 @@ func trace(p *Parser, msg string) *Parser {
 	return p
 }
 
-// Usage pattern: defer un(trace(p, "..."))
+// un Usage pattern: defer un(trace(p, "..."))
 func un(p *Parser) {
 	p.indent--
 	p.printTrace(")")

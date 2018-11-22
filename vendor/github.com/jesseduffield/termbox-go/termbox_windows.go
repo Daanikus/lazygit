@@ -539,7 +539,7 @@ func append_diff_line(y int) int {
 	return n
 }
 
-// compares 'back_buffer' with 'front_buffer' and prepares all changes in the form of
+// prepare_diff_messages compares 'back_buffer' with 'front_buffer' and prepares all changes in the form of
 // 'diff_msg's in the 'diff_buf'
 func prepare_diff_messages() {
 	// clear buffers

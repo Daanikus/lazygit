@@ -259,7 +259,7 @@ func compactCCC() {
 	}
 }
 
-// CompositionExclusions.txt has form:
+// loadCompositionExclusions has form:
 // 0958    # ...
 // See http://unicode.org/reports/tr44/ for full explanation
 func loadCompositionExclusions() {
@@ -326,7 +326,7 @@ func ccc(r rune) uint8 {
 	return chars[r].ccc
 }
 
-// Insert a rune in a buffer, ordered by Canonical Combining Class.
+// insertOrdered a rune in a buffer, ordered by Canonical Combining Class.
 func insertOrdered(b Decomposition, r rune) Decomposition {
 	n := len(b)
 	b = append(b, 0)
@@ -344,7 +344,7 @@ func insertOrdered(b Decomposition, r rune) Decomposition {
 	return b
 }
 
-// Recursively decompose.
+// decomposeRecursive Recursively decompose.
 func decomposeRecursive(form int, r rune, d Decomposition) Decomposition {
 	dcomp := chars[r].forms[form].decomp
 	if len(dcomp) == 0 {
@@ -517,7 +517,7 @@ func printBytes(w io.Writer, b []byte, name string) {
 	fmt.Fprint(w, "\n}\n\n")
 }
 
-// See forminfo.go for format.
+// makeEntry See forminfo.go for format.
 func makeEntry(f *FormInfo, c *Char) uint16 {
 	e := uint16(0)
 	if r := c.codePoint; HangulBase <= r && r < HangulEnd {
@@ -852,7 +852,7 @@ func verifyComputed() {
 	}
 }
 
-// Use values in DerivedNormalizationProps.txt to compare against the
+// testDerived Use values in DerivedNormalizationProps.txt to compare against the
 // values we computed.
 // DerivedNormalizationProps.txt has form:
 // 00C0..00C5    ; NFD_QC; N # ...

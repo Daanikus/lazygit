@@ -87,7 +87,7 @@ func (f visitor) visit(x interface{}) error {
 	return f.visitRec(reflect.ValueOf(x))
 }
 
-// visit recursively calls f on all nodes in v.
+// visitRec visit recursively calls f on all nodes in v.
 func (f visitor) visitRec(v reflect.Value) error {
 	if v.Kind() == reflect.Ptr {
 		if v.IsNil() {
@@ -418,7 +418,7 @@ func (cldr *CLDR) newNode(v, enc reflect.Value) reflect.Value {
 	return n
 }
 
-// v, parent must be pointers to struct
+// inheritFields v, parent must be pointers to struct
 func (cldr *CLDR) inheritFields(v, parent reflect.Value) (res reflect.Value, err error) {
 	t := v.Type()
 	nv := reflect.New(t)
@@ -499,7 +499,7 @@ func (cldr *CLDR) inheritStructPtr(v, parent reflect.Value) (r reflect.Value, er
 	return v, nil
 }
 
-// Must be slice of struct pointers.
+// inheritSlice Must be slice of struct pointers.
 func (cldr *CLDR) inheritSlice(enc, v, parent reflect.Value) (res reflect.Value, err error) {
 	t := v.Type()
 	index := make(map[string]reflect.Value)

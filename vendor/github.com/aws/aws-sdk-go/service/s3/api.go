@@ -7589,7 +7589,7 @@ func (s ContinuationEvent) GoString() string {
 	return s.String()
 }
 
-// The ContinuationEvent is and event in the SelectObjectContentEventStream group of events.
+// eventSelectObjectContentEventStream The ContinuationEvent is and event in the SelectObjectContentEventStream group of events.
 func (s *ContinuationEvent) eventSelectObjectContentEventStream() {}
 
 // UnmarshalEvent unmarshals the EventStream Message into the ContinuationEvent value.
@@ -10060,7 +10060,7 @@ func (s EndEvent) GoString() string {
 	return s.String()
 }
 
-// The EndEvent is and event in the SelectObjectContentEventStream group of events.
+// eventSelectObjectContentEventStream The EndEvent is and event in the SelectObjectContentEventStream group of events.
 func (s *EndEvent) eventSelectObjectContentEventStream() {}
 
 // UnmarshalEvent unmarshals the EventStream Message into the EndEvent value.
@@ -16602,7 +16602,7 @@ func (s *ProgressEvent) SetDetails(v *Progress) *ProgressEvent {
 	return s
 }
 
-// The ProgressEvent is and event in the SelectObjectContentEventStream group of events.
+// eventSelectObjectContentEventStream The ProgressEvent is and event in the SelectObjectContentEventStream group of events.
 func (s *ProgressEvent) eventSelectObjectContentEventStream() {}
 
 // UnmarshalEvent unmarshals the EventStream Message into the ProgressEvent value.
@@ -18887,7 +18887,7 @@ func (s *RecordsEvent) SetPayload(v []byte) *RecordsEvent {
 	return s
 }
 
-// The RecordsEvent is and event in the SelectObjectContentEventStream group of events.
+// eventSelectObjectContentEventStream The RecordsEvent is and event in the SelectObjectContentEventStream group of events.
 func (s *RecordsEvent) eventSelectObjectContentEventStream() {}
 
 // UnmarshalEvent unmarshals the EventStream Message into the RecordsEvent value.
@@ -20496,7 +20496,7 @@ func (s *StatsEvent) SetDetails(v *Stats) *StatsEvent {
 	return s
 }
 
-// The StatsEvent is and event in the SelectObjectContentEventStream group of events.
+// eventSelectObjectContentEventStream The StatsEvent is and event in the SelectObjectContentEventStream group of events.
 func (s *StatsEvent) eventSelectObjectContentEventStream() {}
 
 // UnmarshalEvent unmarshals the EventStream Message into the StatsEvent value.

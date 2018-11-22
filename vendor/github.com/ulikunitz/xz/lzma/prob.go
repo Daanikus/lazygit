@@ -30,7 +30,7 @@ func (p *prob) inc() {
 	*p += ((1 << probbits) - *p) >> movebits
 }
 
-// Computes the new bound for a given range using the probability value.
+// bound Computes the new bound for a given range using the probability value.
 func (p prob) bound(r uint32) uint32 {
 	return (r >> probbits) * uint32(p)
 }

@@ -102,7 +102,7 @@ func (gui *Gui) handleCommitSquashDown(g *gocui.Gui, v *gocui.View) error {
 	return gui.handleCommitSelect(g, v)
 }
 
-// TODO: move to files panel
+// anyUnStagedChanges TODO: move to files panel
 func (gui *Gui) anyUnStagedChanges(files []*commands.File) bool {
 	for _, file := range files {
 		if file.Tracked && file.HasUnstagedChanges {

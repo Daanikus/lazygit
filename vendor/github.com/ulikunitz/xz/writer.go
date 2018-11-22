@@ -311,7 +311,7 @@ func (bw *blockWriter) writeHeader(w io.Writer) error {
 	return nil
 }
 
-// compressed size returns the amount of data written to the underlying
+// compressedSize compressed size returns the amount of data written to the underlying
 // stream.
 func (bw *blockWriter) compressedSize() int64 {
 	return bw.cxz.n

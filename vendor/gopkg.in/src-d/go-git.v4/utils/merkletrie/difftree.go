@@ -266,7 +266,7 @@ func DiffTree(fromTree, toTree noder.Noder,
 	return DiffTreeContext(context.Background(), fromTree, toTree, hashEqual)
 }
 
-// DiffTree calculates the list of changes between two merkletries.  It
+// DiffTreeContext calculates the list of changes between two merkletries.  It
 // uses the provided hashEqual callback to compare noders.
 // Error will be returned if context expires
 // Provided context must be non nil

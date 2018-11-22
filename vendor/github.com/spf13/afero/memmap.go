@@ -157,7 +157,7 @@ func (m *MemMapFs) MkdirAll(path string, perm os.FileMode) error {
 	return nil
 }
 
-// Handle some relative paths
+// normalizePath Handle some relative paths
 func normalizePath(path string) string {
 	path = filepath.Clean(path)
 

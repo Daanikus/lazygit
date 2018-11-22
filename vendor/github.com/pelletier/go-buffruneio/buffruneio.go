@@ -91,7 +91,7 @@ func (rd *Reader) Forget() {
 	}
 }
 
-// PeekRune returns at most the next n runes, reading from the uderlying source if
+// PeekRunes returns at most the next n runes, reading from the uderlying source if
 // needed. Does not move the current index. It includes EOF if reached.
 func (rd *Reader) PeekRunes(n int) []rune {
 	res := make([]rune, 0, n)

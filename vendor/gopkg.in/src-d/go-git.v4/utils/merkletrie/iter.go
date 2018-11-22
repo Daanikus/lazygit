@@ -130,7 +130,7 @@ func (iter *Iter) Step() (noder.Path, error) {
 	return iter.advance(doDescend)
 }
 
-// Advances the iterator in the desired direction: descend or
+// advance the iterator in the desired direction: descend or
 // dontDescend.
 //
 // Returns the new current element and a nil error on success.  If there
@@ -171,7 +171,7 @@ func (iter *Iter) advance(wantDescend bool) (noder.Path, error) {
 	return iter.current()
 }
 
-// Returns the path to the current node, adding the base if there was
+// current Returns the path to the current node, adding the base if there was
 // one, and a nil error.  If there were no noders left, it returns nil
 // and io.EOF.  If an error occurred, it returns nil and the error.
 func (iter *Iter) current() (noder.Path, error) {
@@ -197,7 +197,7 @@ func (iter *Iter) current() (noder.Path, error) {
 	return ret, nil
 }
 
-// removes the current node if any, and all the frames that become empty as a
+// drop removes the current node if any, and all the frames that become empty as a
 // consequence of this action.
 func (iter *Iter) drop() {
 	frame, ok := iter.top()

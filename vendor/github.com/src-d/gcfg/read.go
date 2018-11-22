@@ -14,7 +14,7 @@ import (
 
 var unescape = map[rune]rune{'\\': '\\', '"': '"', 'n': '\n', 't': '\t'}
 
-// no error: invalid literals should be caught by scanner
+// unquote no error: invalid literals should be caught by scanner
 func unquote(s string) string {
 	u, q, esc := make([]rune, 0, len(s)), false, false
 	for _, c := range s {

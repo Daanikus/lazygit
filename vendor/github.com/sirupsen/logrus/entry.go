@@ -53,7 +53,7 @@ func NewEntry(logger *Logger) *Entry {
 	}
 }
 
-// Returns the string representation from the reader and ultimately the
+// String Returns the string representation from the reader and ultimately the
 // formatter.
 func (entry *Entry) String() (string, error) {
 	serialized, err := entry.Logger.Formatter.Format(entry)
@@ -64,17 +64,17 @@ func (entry *Entry) String() (string, error) {
 	return str, nil
 }
 
-// Add an error as single field (using the key defined in ErrorKey) to the Entry.
+// WithError Add an error as single field (using the key defined in ErrorKey) to the Entry.
 func (entry *Entry) WithError(err error) *Entry {
 	return entry.WithField(ErrorKey, err)
 }
 
-// Add a single field to the Entry.
+// WithField Add a single field to the Entry.
 func (entry *Entry) WithField(key string, value interface{}) *Entry {
 	return entry.WithFields(Fields{key: value})
 }
 
-// Add a map of fields to the Entry.
+// WithFields Add a map of fields to the Entry.
 func (entry *Entry) WithFields(fields Fields) *Entry {
 	data := make(Fields, len(entry.Data)+len(fields))
 	for k, v := range entry.Data {
@@ -86,12 +86,12 @@ func (entry *Entry) WithFields(fields Fields) *Entry {
 	return &Entry{Logger: entry.Logger, Data: data, Time: entry.Time}
 }
 
-// Overrides the time of the Entry.
+// WithTime Overrides the time of the Entry.
 func (entry *Entry) WithTime(t time.Time) *Entry {
 	return &Entry{Logger: entry.Logger, Data: entry.Data, Time: t}
 }
 
-// This function is not declared with a pointer value because otherwise
+// log This function is not declared with a pointer value because otherwise
 // race conditions will occur when using multiple goroutines
 func (entry Entry) log(level Level, msg string) {
 	var buffer *bytes.Buffer

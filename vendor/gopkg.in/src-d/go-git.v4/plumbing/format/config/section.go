@@ -83,7 +83,7 @@ func (s *Section) SetOption(key string, value string) *Section {
 	return s
 }
 
-// Remove an option with the specified key. The updated Section is returned.
+// RemoveOption an option with the specified key. The updated Section is returned.
 func (s *Section) RemoveOption(key string) *Section {
 	s.Options = s.Options.withoutOption(key)
 	return s

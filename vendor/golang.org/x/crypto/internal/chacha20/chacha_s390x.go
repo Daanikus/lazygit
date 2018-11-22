@@ -25,6 +25,6 @@ func (c *Cipher) xorKeyStreamAsm(dst, src []byte) {
 	xorKeyStreamVX(dst, src, &c.key, &c.nonce, &c.counter, &c.buf, &c.len)
 }
 
-// EXRL targets, DO NOT CALL!
+// mvcSrcToBuf EXRL targets, DO NOT CALL!
 func mvcSrcToBuf()
 func mvcBufToDst()

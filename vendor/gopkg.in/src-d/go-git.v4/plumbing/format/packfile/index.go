@@ -96,7 +96,7 @@ func (idx *Index) LookupHash(h plumbing.Hash) (*idxfile.Entry, bool) {
 	return e, ok
 }
 
-// LookupHash looks an entry up by its offset in the packfile. An idxfile.Entry
+// LookupOffset looks an entry up by its offset in the packfile. An idxfile.Entry
 // is returned and a bool, which is true if it was found or false if it wasn't.
 func (idx *Index) LookupOffset(offset uint64) (*idxfile.Entry, bool) {
 	i := sort.Search(len(idx.byOffset), func(i int) bool {

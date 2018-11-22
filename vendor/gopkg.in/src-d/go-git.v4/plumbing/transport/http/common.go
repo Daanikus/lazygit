@@ -14,7 +14,7 @@ import (
 	"gopkg.in/src-d/go-git.v4/utils/ioutil"
 )
 
-// it requires a bytes.Buffer, because we need to know the length
+// applyHeadersToRequest it requires a bytes.Buffer, because we need to know the length
 func applyHeadersToRequest(req *http.Request, content *bytes.Buffer, host string, requestType string) {
 	req.Header.Add("User-Agent", "git/1.0")
 	req.Header.Add("Host", host) // host:port

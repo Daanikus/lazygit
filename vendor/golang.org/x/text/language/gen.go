@@ -507,7 +507,7 @@ func strToInt(s string) uint {
 	return v
 }
 
-// converts the given integer to the original ASCII string passed to strToInt.
+// intToStr converts the given integer to the original ASCII string passed to strToInt.
 // len(s) must match the number of characters obtained.
 func intToStr(v uint, s []byte) {
 	for i := len(s) - 1; i >= 0; i-- {
@@ -525,7 +525,7 @@ func (b *builder) writeBitVector(name string, ss []string) {
 	b.writeSlice(name, vec)
 }
 
-// TODO: convert this type into a list or two-stage trie.
+// writeMapFunc TODO: convert this type into a list or two-stage trie.
 func (b *builder) writeMapFunc(name string, m map[string]string, f func(string) uint16) {
 	b.comment(name)
 	v := reflect.ValueOf(m)
@@ -1087,7 +1087,7 @@ func find(list []string, s string) int {
 	return -1
 }
 
-// writeVariants generates per-variant information and creates a map from variant
+// writeVariant writeVariants generates per-variant information and creates a map from variant
 // name to index value. We assign index values such that sorting multiple
 // variants by index value will result in the correct order.
 // There are two types of variants: specialized and general. Specialized variants

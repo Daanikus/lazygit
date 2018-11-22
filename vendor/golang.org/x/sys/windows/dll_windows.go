@@ -20,7 +20,7 @@ type DLLError struct {
 
 func (e *DLLError) Error() string { return e.Msg }
 
-// Implemented in runtime/syscall_windows.goc; we provide jumps to them in our assembly file.
+// loadlibrary Implemented in runtime/syscall_windows.goc; we provide jumps to them in our assembly file.
 func loadlibrary(filename *uint16) (handle uintptr, err syscall.Errno)
 func getprocaddress(handle uintptr, procname *uint8) (proc uintptr, err syscall.Errno)
 

@@ -29,7 +29,7 @@ type SockaddrDatalink struct {
 	raw    RawSockaddrDatalink
 }
 
-// Translate "kern.hostname" to []_C_int{0,1,2,3}.
+// nametomib Translate "kern.hostname" to []_C_int{0,1,2,3}.
 func nametomib(name string) (mib []_C_int, err error) {
 	const siz = unsafe.Sizeof(mib[0])
 
@@ -67,12 +67,12 @@ func Pipe(p []int) (err error) {
 	return
 }
 
-//sys	extpread(fd int, p []byte, flags int, offset int64) (n int, err error)
+// Pread sys	extpread(fd int, p []byte, flags int, offset int64) (n int, err error)
 func Pread(fd int, p []byte, offset int64) (n int, err error) {
 	return extpread(fd, p, 0, offset)
 }
 
-//sys	extpwrite(fd int, p []byte, flags int, offset int64) (n int, err error)
+// Pwrite sys	extpwrite(fd int, p []byte, flags int, offset int64) (n int, err error)
 func Pwrite(fd int, p []byte, offset int64) (n int, err error) {
 	return extpwrite(fd, p, 0, offset)
 }

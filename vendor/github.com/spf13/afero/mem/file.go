@@ -275,7 +275,7 @@ type FileInfo struct {
 	*FileData
 }
 
-// Implements os.FileInfo
+// Name Implements os.FileInfo
 func (s *FileInfo) Name() string {
 	s.Lock()
 	_, name := filepath.Split(s.name)

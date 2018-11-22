@@ -395,7 +395,7 @@ func NewUnknownServiceError(p, s string, known []string) UnknownServiceError {
 	}
 }
 
-// String returns the string representation of the error.
+// Error String returns the string representation of the error.
 func (e UnknownServiceError) Error() string {
 	extra := fmt.Sprintf("partition: %q, service: %q",
 		e.Partition, e.Service)
@@ -433,7 +433,7 @@ func NewUnknownEndpointError(p, s, r string, known []string) UnknownEndpointErro
 	}
 }
 
-// String returns the string representation of the error.
+// Error String returns the string representation of the error.
 func (e UnknownEndpointError) Error() string {
 	extra := fmt.Sprintf("partition: %q, service: %q, region: %q",
 		e.Partition, e.Service, e.Region)

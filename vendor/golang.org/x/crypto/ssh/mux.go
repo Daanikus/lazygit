@@ -32,7 +32,7 @@ type chanList struct {
 	offset uint32
 }
 
-// Assigns a channel ID to the given channel.
+// add Assigns a channel ID to the given channel.
 func (c *chanList) add(ch *channel) uint32 {
 	c.Lock()
 	defer c.Unlock()

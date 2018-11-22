@@ -107,7 +107,7 @@ func (l *lexer) ignore() {
 	l.start = l.pos
 }
 
-// appends the rune to the current value
+// appendRune appends the rune to the current value
 func (l *lexer) appendRune(r rune) {
 	l.runes = append(l.runes, r)
 }
@@ -135,7 +135,7 @@ func (l *lexer) acceptRunUntil(term rune) {
 	l.backup()
 }
 
-// hasText returns true if the current parsed text is not empty.
+// isNotEmpty hasText returns true if the current parsed text is not empty.
 func (l *lexer) isNotEmpty() bool {
 	return l.pos > l.start
 }
@@ -326,7 +326,7 @@ func (l *lexer) scanEscapeSequence() error {
 	}
 }
 
-// scans a unicode literal in the form \uXXXX. We expect to be after the \u.
+// scanUnicodeLiteral scans a unicode literal in the form \uXXXX. We expect to be after the \u.
 func (l *lexer) scanUnicodeLiteral() error {
 	// scan the digits
 	d := make([]rune, 4)

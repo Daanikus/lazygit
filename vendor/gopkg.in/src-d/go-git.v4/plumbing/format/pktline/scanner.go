@@ -76,7 +76,7 @@ func (s *Scanner) Bytes() []byte {
 	return s.payload
 }
 
-// Method readPayloadLen returns the payload length by reading the
+// readPayloadLen Method readPayloadLen returns the payload length by reading the
 // pkt-len and subtracting the pkt-len size.
 func (s *Scanner) readPayloadLen() (int, error) {
 	if _, err := io.ReadFull(s.r, s.len[:]); err != nil {
@@ -104,7 +104,7 @@ func (s *Scanner) readPayloadLen() (int, error) {
 	}
 }
 
-// Turns the hexadecimal representation of a number in a byte slice into
+// hexDecode Turns the hexadecimal representation of a number in a byte slice into
 // a number. This function substitute strconv.ParseUint(string(buf), 16,
 // 16) and/or hex.Decode, to avoid generating new strings, thus helping the
 // GC.
@@ -120,7 +120,7 @@ func hexDecode(buf [lenSize]byte) (int, error) {
 	return ret, nil
 }
 
-// turns the hexadecimal ascii representation of a byte into its
+// asciiHexToByte turns the hexadecimal ascii representation of a byte into its
 // numerical value.  Example: from 'b' to 11 (0xb).
 func asciiHexToByte(b byte) (byte, error) {
 	switch {

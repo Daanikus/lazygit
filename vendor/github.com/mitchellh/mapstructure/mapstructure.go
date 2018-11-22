@@ -222,7 +222,7 @@ func (d *Decoder) Decode(input interface{}) error {
 	return d.decode("", input, reflect.ValueOf(d.config.Result).Elem())
 }
 
-// Decodes an unknown data type into a specific reflection value.
+// decode an unknown data type into a specific reflection value.
 func (d *Decoder) decode(name string, input interface{}, outVal reflect.Value) error {
 	if input == nil {
 		// If the data is nil, then we don't set anything, unless ZeroFields is set
@@ -300,7 +300,7 @@ func (d *Decoder) decode(name string, input interface{}, outVal reflect.Value) e
 	return err
 }
 
-// This decodes a basic type (bool, int, string, etc.) and sets the
+// decodeBasic This decodes a basic type (bool, int, string, etc.) and sets the
 // value to "data" of that type.
 func (d *Decoder) decodeBasic(name string, data interface{}, val reflect.Value) error {
 	if val.IsValid() && val.Elem().IsValid() {

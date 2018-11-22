@@ -33,7 +33,7 @@ func buildXML(params interface{}, e *xml.Encoder, sorted bool) error {
 	return nil
 }
 
-// Returns the reflection element of a value, if it is a pointer.
+// elemOf Returns the reflection element of a value, if it is a pointer.
 func elemOf(value reflect.Value) reflect.Value {
 	for value.Kind() == reflect.Ptr {
 		value = value.Elem()

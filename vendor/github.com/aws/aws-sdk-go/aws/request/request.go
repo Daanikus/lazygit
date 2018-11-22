@@ -596,7 +596,7 @@ func SanitizeHostForHeader(r *http.Request) {
 	}
 }
 
-// Returns host from request
+// getHost Returns host from request
 func getHost(r *http.Request) string {
 	if r.Host != "" {
 		return r.Host
@@ -605,7 +605,7 @@ func getHost(r *http.Request) string {
 	return r.URL.Host
 }
 
-// Hostname returns u.Host, without any port number.
+// stripPort Hostname returns u.Host, without any port number.
 //
 // If Host is an IPv6 literal with a port number, Hostname returns the
 // IPv6 literal without the square brackets. IPv6 literals may include
@@ -623,7 +623,7 @@ func stripPort(hostport string) string {
 	return hostport[:colon]
 }
 
-// Port returns the port part of u.Host, without the leading colon.
+// portOnly returns the port part of u.Host, without the leading colon.
 // If u.Host doesn't contain a port, Port returns an empty string.
 //
 // Copied from the Go 1.8 standard library (net/url)
@@ -641,7 +641,7 @@ func portOnly(hostport string) string {
 	return hostport[colon+len(":"):]
 }
 
-// Returns true if the specified URI is using the standard port
+// isDefaultPort Returns true if the specified URI is using the standard port
 // (i.e. port 80 for HTTP URIs or 443 for HTTPS URIs)
 func isDefaultPort(scheme, port string) bool {
 	if port == "" {

@@ -56,7 +56,7 @@ func FeCopy(dst, src *FieldElement) {
 	copy(dst[:], src[:])
 }
 
-// Replace (f,g) with (g,g) if b == 1;
+// FeCMove Replace (f,g) with (g,g) if b == 1;
 // replace (f,g) with (f,g) if b == 0.
 //
 // Preconditions: b in {0,1}.
@@ -1015,7 +1015,7 @@ func GeScalarMultBase(h *ExtendedGroupElement, a *[32]byte) {
 
 // The scalars are GF(2^252 + 27742317777372353535851937790883648493).
 
-// Input:
+// ScMulAdd Input:
 //   a[0]+256*a[1]+...+256^31*a[31] = a
 //   b[0]+256*b[1]+...+256^31*b[31] = b
 //   c[0]+256*c[1]+...+256^31*c[31] = c
@@ -1448,7 +1448,7 @@ func ScMulAdd(s, a, b, c *[32]byte) {
 	s[31] = byte(s11 >> 17)
 }
 
-// Input:
+// ScReduce Input:
 //   s[0]+256*s[1]+...+256^63*s[63] = s
 //
 // Output:

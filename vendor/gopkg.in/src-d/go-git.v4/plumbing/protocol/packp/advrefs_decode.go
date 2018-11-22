@@ -53,7 +53,7 @@ func (d *advRefsDecoder) Decode(v *AdvRefs) error {
 
 type decoderStateFn func(*advRefsDecoder) decoderStateFn
 
-// fills out the parser stiky error
+// error fills out the parser stiky error
 func (d *advRefsDecoder) error(format string, a ...interface{}) {
 	msg := fmt.Sprintf(
 		"pkt-line %d: %s", d.nLine,
@@ -63,7 +63,7 @@ func (d *advRefsDecoder) error(format string, a ...interface{}) {
 	d.err = NewErrUnexpectedData(msg, d.line)
 }
 
-// Reads a new pkt-line from the scanner, makes its payload available as
+// nextLine Reads a new pkt-line from the scanner, makes its payload available as
 // p.line and increments p.nLine.  A successful invocation returns true,
 // otherwise, false is returned and the sticky error is filled out
 // accordingly.  Trims eols at the end of the payloads.
@@ -90,7 +90,7 @@ func (d *advRefsDecoder) nextLine() bool {
 	return true
 }
 
-// The HTTP smart prefix is often followed by a flush-pkt.
+// decodePrefix The HTTP smart prefix is often followed by a flush-pkt.
 func decodePrefix(d *advRefsDecoder) decoderStateFn {
 	if ok := d.nextLine(); !ok {
 		return nil
@@ -123,7 +123,7 @@ func isPrefix(payload []byte) bool {
 	return len(payload) > 0 && payload[0] == '#'
 }
 
-// If the first hash is zero, then a no-refs is coming. Otherwise, a
+// decodeFirstHash If the first hash is zero, then a no-refs is coming. Otherwise, a
 // list-of-refs is coming, and the hash will be followed by the first
 // advertised ref.
 func decodeFirstHash(p *advRefsDecoder) decoderStateFn {
@@ -152,7 +152,7 @@ func decodeFirstHash(p *advRefsDecoder) decoderStateFn {
 	return decodeFirstRef
 }
 
-// Skips SP "capabilities^{}" NUL
+// decodeSkipNoRefs Skips SP "capabilities^{}" NUL
 func decodeSkipNoRefs(p *advRefsDecoder) decoderStateFn {
 	if len(p.line) < len(noHeadMark) {
 		p.error("too short zero-id ref")
@@ -169,7 +169,7 @@ func decodeSkipNoRefs(p *advRefsDecoder) decoderStateFn {
 	return decodeCaps
 }
 
-// decode the refname, expects SP refname NULL
+// decodeFirstRef decode the refname, expects SP refname NULL
 func decodeFirstRef(l *advRefsDecoder) decoderStateFn {
 	if len(l.line) < 3 {
 		l.error("line too short after hash")
@@ -208,7 +208,7 @@ func decodeCaps(p *advRefsDecoder) decoderStateFn {
 	return decodeOtherRefs
 }
 
-// The refs are either tips (obj-id SP refname) or a peeled (obj-id SP refname^{}).
+// decodeOtherRefs refs are either tips (obj-id SP refname) or a peeled (obj-id SP refname^{}).
 // If there are no refs, then there might be a shallow or flush-ptk.
 func decodeOtherRefs(p *advRefsDecoder) decoderStateFn {
 	if ok := p.nextLine(); !ok {
@@ -239,7 +239,7 @@ func decodeOtherRefs(p *advRefsDecoder) decoderStateFn {
 	return decodeOtherRefs
 }
 
-// Reads a ref-name
+// readRef Reads a ref-name
 func readRef(data []byte) (string, plumbing.Hash, error) {
 	chunks := bytes.Split(data, sp)
 	switch {
@@ -252,7 +252,7 @@ func readRef(data []byte) (string, plumbing.Hash, error) {
 	}
 }
 
-// Keeps reading shallows until a flush-pkt is found
+// decodeShallow Keeps reading shallows until a flush-pkt is found
 func decodeShallow(p *advRefsDecoder) decoderStateFn {
 	if !bytes.HasPrefix(p.line, shallow) {
 		p.error("malformed shallow prefix, found %q... instead", p.line[:len(shallow)])

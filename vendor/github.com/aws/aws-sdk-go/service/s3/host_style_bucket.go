@@ -30,7 +30,7 @@ var accelerateOpBlacklist = operationBlacklist{
 	opListBuckets, opCreateBucket, opDeleteBucket,
 }
 
-// Request handler to automatically add the bucket name to the endpoint domain
+// updateEndpointForS3Config Request handler to automatically add the bucket name to the endpoint domain
 // if possible. This style of bucket is valid for all bucket names which are
 // DNS compatible and do not contain "."
 func updateEndpointForS3Config(r *request.Request) {
@@ -109,7 +109,7 @@ func updateEndpointForAccelerate(r *request.Request) {
 	moveBucketToHost(r.HTTPRequest.URL, bucket)
 }
 
-// Attempts to retrieve the bucket name from the request input parameters.
+// bucketNameFromReqParams Attempts to retrieve the bucket name from the request input parameters.
 // If no bucket is found, or the field is empty "", false will be returned.
 func bucketNameFromReqParams(params interface{}) (string, bool) {
 	if iface, ok := params.(bucketGetter); ok {

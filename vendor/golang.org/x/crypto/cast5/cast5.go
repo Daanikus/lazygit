@@ -231,7 +231,7 @@ func (c *Cipher) keySchedule(in []byte) {
 	}
 }
 
-// These are the three 'f' functions. See RFC 2144, section 2.2.
+// f1 These are the three 'f' functions. See RFC 2144, section 2.2.
 func f1(d, m uint32, r uint8) uint32 {
 	t := m + d
 	I := (t << r) | (t >> (32 - r))

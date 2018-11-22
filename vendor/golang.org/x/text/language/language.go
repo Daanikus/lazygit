@@ -395,7 +395,7 @@ func (t Tag) Region() (Region, Confidence) {
 	return Region{_ZZ}, No // TODO: return world instead of undetermined?
 }
 
-// Variant returns the variants specified explicitly for this language tag.
+// Variants returns the variants specified explicitly for this language tag.
 // or nil if no variant was specified.
 func (t Tag) Variants() []Variant {
 	v := []Variant{}
@@ -464,7 +464,7 @@ func (t Tag) Parent() Tag {
 	return und
 }
 
-// returns token t and the rest of the string.
+// nextToken returns token t and the rest of the string.
 func nextToken(s string) (t, tail string) {
 	p := strings.Index(s[1:], "-")
 	if p == -1 {
@@ -634,7 +634,7 @@ func (t Tag) SetTypeForKey(key, value string) (Tag, error) {
 	return t, nil
 }
 
-// findKeyAndType returns the start and end position for the type corresponding
+// findTypeForKey returns the start and end position for the type corresponding
 // to key or the point at which to insert the key-value pair if the type
 // wasn't found. The hasExt return value reports whether an -u extension was present.
 // Note: the extensions are typically very small and are likely to contain

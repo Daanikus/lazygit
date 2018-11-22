@@ -166,7 +166,7 @@ func (list *List) String() string {
 	return str
 }
 
-// Check that the index is within bounds of the list
+// withinRange Check that the index is within bounds of the list
 func (list *List) withinRange(index int) bool {
 	return index >= 0 && index < list.size
 }
@@ -177,7 +177,7 @@ func (list *List) resize(cap int) {
 	list.elements = newElements
 }
 
-// Expand the array if necessary, i.e. capacity will be reached if we add n elements
+// growBy Expand the array if necessary, i.e. capacity will be reached if we add n elements
 func (list *List) growBy(n int) {
 	// When capacity is reached, grow by a factor of growthFactor and add number of elements
 	currentCapacity := cap(list.elements)

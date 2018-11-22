@@ -97,7 +97,7 @@ func (t *binTree) WriteByte(c byte) error {
 	return nil
 }
 
-// Writes writes a sequence of bytes into the binTree structure.
+// Write writes a sequence of bytes into the binTree structure.
 func (t *binTree) Write(p []byte) (n int, err error) {
 	for _, c := range p {
 		t.WriteByte(c)

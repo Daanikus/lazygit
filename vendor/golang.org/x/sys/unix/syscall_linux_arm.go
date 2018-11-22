@@ -43,7 +43,7 @@ func Pipe2(p []int, flags int) (err error) {
 	return
 }
 
-// Underlying system call writes to newoffset via pointer.
+// seek Underlying system call writes to newoffset via pointer.
 // Implemented in assembly to avoid allocation.
 func seek(fd int, offset int64, whence int) (newoffset int64, err syscall.Errno)
 

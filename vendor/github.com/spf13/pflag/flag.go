@@ -358,7 +358,7 @@ func (f *FlagSet) lookup(name NormalizedName) *Flag {
 	return f.formal[name]
 }
 
-// func to return a given type for a given flag name
+// getFlagType func to return a given type for a given flag name
 func (f *FlagSet) getFlagType(name string, ftype string, convFunc func(sval string) (interface{}, error)) (interface{}, error) {
 	flag := f.Lookup(name)
 	if flag == nil {
@@ -590,7 +590,7 @@ func UnquoteUsage(flag *Flag) (name string, usage string) {
 	return
 }
 
-// Splits the string `s` on whitespace into an initial substring up to
+// wrapN Splits the string `s` on whitespace into an initial substring up to
 // `i` runes in length and the remainder. Will go `slop` over `i` if
 // that encompasses the entire string (which allows the caller to
 // avoid short orphan words on the final line).
@@ -610,7 +610,7 @@ func wrapN(i, slop int, s string) (string, string) {
 	return s[:w], s[w+1:]
 }
 
-// Wraps the string `s` to a maximum width `w` with leading indent
+// wrap the string `s` to a maximum width `w` with leading indent
 // `i`. The first line is not indented (this is assumed to be done by
 // caller). Pass `w` == 0 to do no wrapping
 func wrap(i, w int, s string) string {
@@ -915,7 +915,7 @@ func (f *FlagSet) usage() {
 	}
 }
 
-//--unknown (args will be empty)
+// stripUnknownFlagValue --unknown (args will be empty)
 //--unknown --next-flag ... (args will be --next-flag ...)
 //--unknown arg ... (args will be arg ...)
 func stripUnknownFlagValue(args []string) []string {

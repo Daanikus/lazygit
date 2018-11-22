@@ -52,7 +52,7 @@ type Scanner struct {
 	ErrorCount int // number of errors encountered
 }
 
-// Read the next Unicode char into s.ch.
+// next Read the next Unicode char into s.ch.
 // s.ch < 0 means end-of-file.
 //
 func (s *Scanner) next() {

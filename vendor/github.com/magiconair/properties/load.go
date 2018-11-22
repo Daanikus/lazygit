@@ -47,7 +47,7 @@ type Loader struct {
 	IgnoreMissing bool
 }
 
-// Load reads a buffer into a Properties struct.
+// LoadBytes reads a buffer into a Properties struct.
 func (l *Loader) LoadBytes(buf []byte) (*Properties, error) {
 	return l.loadBytes(buf, l.Encoding)
 }
@@ -272,7 +272,7 @@ func expandName(name string) (string, error) {
 	return expand(name, []string{}, "${", "}", make(map[string]string))
 }
 
-// Interprets a byte buffer either as an ISO-8859-1 or UTF-8 encoded string.
+// convert Interprets a byte buffer either as an ISO-8859-1 or UTF-8 encoded string.
 // For ISO-8859-1 we can convert each byte straight into a rune since the
 // first 256 unicode code points cover ISO-8859-1.
 func convert(buf []byte, enc Encoding) string {

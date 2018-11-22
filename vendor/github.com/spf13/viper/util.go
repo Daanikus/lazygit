@@ -114,7 +114,7 @@ func absPathify(inPath string) string {
 	return ""
 }
 
-// Check if File / Directory Exists
+// exists Check if File / Directory Exists
 func exists(fs afero.Fs, path string) (bool, error) {
 	_, err := fs.Stat(path)
 	if err == nil {

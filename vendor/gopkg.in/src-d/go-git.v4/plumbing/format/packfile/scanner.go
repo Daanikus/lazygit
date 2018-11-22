@@ -243,7 +243,7 @@ func parseType(b byte) plumbing.ObjectType {
 	return plumbing.ObjectType((b & maskType) >> firstLengthBits)
 }
 
-// the length is codified in the last 4 bits of the first byte and in
+// readLength the length is codified in the last 4 bits of the first byte and in
 // the last 7 bits of subsequent bytes.  Last byte has a 0 MSB.
 func (s *Scanner) readLength(first byte) (int64, error) {
 	length := int64(first & maskFirstLength)
@@ -275,7 +275,7 @@ func (s *Scanner) NextObject(w io.Writer) (written int64, crc32 uint32, err erro
 	return
 }
 
-// ReadRegularObject reads and write a non-deltified object
+// copyObject reads and write a non-deltified object
 // from it zlib stream in an object entry in the packfile.
 func (s *Scanner) copyObject(w io.Writer) (n int64, err error) {
 	if s.zr == nil {

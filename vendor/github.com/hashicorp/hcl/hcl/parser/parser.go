@@ -525,7 +525,7 @@ func trace(p *Parser, msg string) *Parser {
 	return p
 }
 
-// Usage pattern: defer un(trace(p, "..."))
+// un Usage pattern: defer un(trace(p, "..."))
 func un(p *Parser) {
 	p.indent--
 	p.printTrace(")")

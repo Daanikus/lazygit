@@ -297,7 +297,7 @@ func (l *tomlLexer) lexComma() tomlLexStateFn {
 	return l.lexRvalue
 }
 
-// Parse the key and emits its value without escape sequences.
+// lexKey Parse the key and emits its value without escape sequences.
 // bare keys, basic string keys and literal string keys are supported.
 func (l *tomlLexer) lexKey() tomlLexStateFn {
 	growingString := ""
@@ -406,7 +406,7 @@ func (l *tomlLexer) lexLiteralString() tomlLexStateFn {
 	return l.lexRvalue
 }
 
-// Lex a string and return the results as a string.
+// lexStringAsString a string and return the results as a string.
 // Terminator is the substring indicating the end of the token.
 // The resulting string does not include the terminator.
 func (l *tomlLexer) lexStringAsString(terminator string, discardLeadingNewLine, acceptNewLines bool) (string, error) {
@@ -558,7 +558,7 @@ func (l *tomlLexer) lexTableKey() tomlLexStateFn {
 	return l.lexInsideTableKey
 }
 
-// Parse the key till "]]", but only bare keys are supported
+// lexInsideTableArrayKey Parse the key till "]]", but only bare keys are supported
 func (l *tomlLexer) lexInsideTableArrayKey() tomlLexStateFn {
 	for r := l.peek(); r != eof; r = l.peek() {
 		switch r {
@@ -582,7 +582,7 @@ func (l *tomlLexer) lexInsideTableArrayKey() tomlLexStateFn {
 	return l.errorf("unclosed table array key")
 }
 
-// Parse the key till "]" but only bare keys are supported
+// lexInsideTableKey Parse the key till "]" but only bare keys are supported
 func (l *tomlLexer) lexInsideTableKey() tomlLexStateFn {
 	for r := l.peek(); r != eof; r = l.peek() {
 		switch r {
@@ -734,7 +734,7 @@ func init() {
 	dateRegexp = regexp.MustCompile(`^\d{1,4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?(Z|[+-]\d{2}:\d{2})`)
 }
 
-// Entry point
+// lexToml Entry point
 func lexToml(inputBytes []byte) []token {
 	runes := bytes.Runes(inputBytes)
 	l := &tomlLexer{

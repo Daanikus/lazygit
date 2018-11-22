@@ -143,7 +143,7 @@ func (r *keyring) List() ([]*Key, error) {
 	return ids, nil
 }
 
-// Insert adds a private key to the keyring. If a certificate
+// Add Insert adds a private key to the keyring. If a certificate
 // is given, that certificate is added as public key. Note that
 // any constraints given are ignored.
 func (r *keyring) Add(key AddedKey) error {

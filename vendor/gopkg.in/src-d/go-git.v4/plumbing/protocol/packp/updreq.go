@@ -27,7 +27,7 @@ type ReferenceUpdateRequest struct {
 	Progress sideband.Progress
 }
 
-// New returns a pointer to a new ReferenceUpdateRequest value.
+// NewReferenceUpdateRequest returns a pointer to a new ReferenceUpdateRequest value.
 func NewReferenceUpdateRequest() *ReferenceUpdateRequest {
 	return &ReferenceUpdateRequest{
 		// TODO: Add support for push-cert

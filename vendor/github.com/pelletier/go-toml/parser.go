@@ -23,7 +23,7 @@ type tomlParser struct {
 
 type tomlParserStateFn func() tomlParserStateFn
 
-// Formats and panics an error message based on a token
+// raiseError Formats and panics an error message based on a token
 func (p *tomlParser) raiseError(tok *token, msg string, args ...interface{}) {
 	panic(tok.Position.String() + ": " + fmt.Sprintf(msg, args...))
 }

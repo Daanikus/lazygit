@@ -107,7 +107,7 @@ func (s *scanner) init() {
 	s.scan()
 }
 
-// restToLower converts the string between start and end to lower case.
+// toLower converts the string between start and end to lower case.
 func (s *scanner) toLower(start, end int) {
 	for i := start; i < end; i++ {
 		c := s.b[i]

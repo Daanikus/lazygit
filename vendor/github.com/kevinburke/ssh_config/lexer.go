@@ -35,7 +35,7 @@ func (s *sshLexer) lexComment(previousState sshLexStateFn) sshLexStateFn {
 	}
 }
 
-// lex the space after an equals sign in a function
+// lexRspace lex the space after an equals sign in a function
 func (s *sshLexer) lexRspace() sshLexStateFn {
 	for {
 		next := s.peek()

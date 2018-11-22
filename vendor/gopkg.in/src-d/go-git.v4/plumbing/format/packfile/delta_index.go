@@ -141,7 +141,7 @@ func newDeltaIndexScanner(buf []byte, size int) *deltaIndexScanner {
 	return scanner
 }
 
-// slightly modified version of JGit's DeltaIndexScanner. We store the offset on the entries
+// scan slightly modified version of JGit's DeltaIndexScanner. We store the offset on the entries
 // instead of the entries and the key, so we avoid operations to retrieve the offset later, as
 // we don't use the key.
 // See: https://github.com/eclipse/jgit/blob/005e5feb4ecd08c4e4d141a38b9e7942accb3212/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/pack/DeltaIndexScanner.java
@@ -181,7 +181,7 @@ func tableSize(worstCaseBlockCnt int) int {
 	return sz
 }
 
-// use https://golang.org/pkg/math/bits/#LeadingZeros32 in the future
+// leadingZeros use https://golang.org/pkg/math/bits/#LeadingZeros32 in the future
 func leadingZeros(x uint32) (n int) {
 	if x >= 1<<16 {
 		x >>= 16

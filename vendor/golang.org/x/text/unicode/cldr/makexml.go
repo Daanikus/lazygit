@@ -322,7 +322,7 @@ func (b *builder) resolve(e *element) {
 	}
 }
 
-// return true if s is contained in set.
+// in return true if s is contained in set.
 func in(set []string, s string) bool {
 	for _, v := range set {
 		if v == s {

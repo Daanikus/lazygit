@@ -221,7 +221,7 @@ func New() *Viper {
 	return v
 }
 
-// Intended for testing, will reset all to default settings.
+// Reset Intended for testing, will reset all to default settings.
 // In the public interface for the viper package so applications
 // can use it in their testing as well.
 func Reset() {
@@ -812,7 +812,7 @@ func defaultDecoderConfig(output interface{}, opts ...DecoderConfigOption) *maps
 	return c
 }
 
-// A wrapper around mapstructure.Decode that mimics the WeakDecode functionality
+// decode A wrapper around mapstructure.Decode that mimics the WeakDecode functionality
 func decode(input interface{}, config *mapstructure.DecoderConfig) error {
 	decoder, err := mapstructure.NewDecoder(config)
 	if err != nil {
@@ -907,7 +907,7 @@ func (v *Viper) BindEnv(input ...string) error {
 	return nil
 }
 
-// Given a key, find the value.
+// find Given a key, find the value.
 // Viper will check in the following order:
 // flag, env, config file, key/value store, default.
 // Viper will check to see if an alias exists first.
@@ -1064,7 +1064,7 @@ func (v *Viper) SetEnvKeyReplacer(r *strings.Replacer) {
 	v.envKeyReplacer = r
 }
 
-// Aliases provide another accessor for the same key.
+// RegisterAlias Aliases provide another accessor for the same key.
 // This enables one to change a name without breaking the application
 func RegisterAlias(alias string, key string) { v.RegisterAlias(alias, key) }
 func (v *Viper) RegisterAlias(alias string, key string) {
@@ -1294,7 +1294,7 @@ func (v *Viper) writeConfig(filename string, force bool) error {
 	return v.marshalWriter(f, configType)
 }
 
-// Unmarshal a Reader into a map.
+// unmarshalReader a Reader into a map.
 // Should probably be an unexported function.
 func unmarshalReader(in io.Reader, c map[string]interface{}) error {
 	return v.unmarshalReader(in, c)
@@ -1354,7 +1354,7 @@ func (v *Viper) unmarshalReader(in io.Reader, c map[string]interface{}) error {
 	return nil
 }
 
-// Marshal a map into Writer.
+// marshalWriter a map into Writer.
 func marshalWriter(f afero.File, configType string) error {
 	return v.marshalWriter(f, configType)
 }
@@ -1539,7 +1539,7 @@ func (v *Viper) insensitiviseMaps() {
 	insensitiviseMap(v.kvstore)
 }
 
-// Retrieve the first found remote configuration.
+// getKeyValueConfig Retrieve the first found remote configuration.
 func (v *Viper) getKeyValueConfig() error {
 	if RemoteConfig == nil {
 		return RemoteConfigError("Enable the remote features by doing a blank import of the viper/remote package: '_ github.com/spf13/viper/remote'")
@@ -1565,7 +1565,7 @@ func (v *Viper) getRemoteConfig(provider RemoteProvider) (map[string]interface{}
 	return v.kvstore, err
 }
 
-// Retrieve the first found remote configuration.
+// watchKeyValueConfigOnChannel Retrieve the first found remote configuration.
 func (v *Viper) watchKeyValueConfigOnChannel() error {
 	for _, rp := range v.remoteProviders {
 		respc, _ := RemoteConfig.WatchChannel(rp)
@@ -1582,7 +1582,7 @@ func (v *Viper) watchKeyValueConfigOnChannel() error {
 	return RemoteConfigError("No Files Found")
 }
 
-// Retrieve the first found remote configuration.
+// watchKeyValueConfig Retrieve the first found remote configuration.
 func (v *Viper) watchKeyValueConfig() error {
 	for _, rp := range v.remoteProviders {
 		val, err := v.watchRemoteConfig(rp)
@@ -1774,7 +1774,7 @@ func (v *Viper) searchInPath(in string) (filename string) {
 	return ""
 }
 
-// Search all configPaths for any config file.
+// findConfigFile Search all configPaths for any config file.
 // Returns the first path that exists (and is a config file).
 func (v *Viper) findConfigFile() (string, error) {
 	jww.INFO.Println("Searching for config in ", v.configPaths)

@@ -134,7 +134,7 @@ func (w *Writer2) written() int {
 // errClosed indicates that the writer is closed.
 var errClosed = errors.New("lzma: writer closed")
 
-// Writes data to LZMA2 stream. Note that written data will be buffered.
+// Write data to LZMA2 stream. Note that written data will be buffered.
 // Use Flush or Close to ensure that data is written to the underlying
 // writer.
 func (w *Writer2) Write(p []byte) (n int, err error) {
@@ -237,7 +237,7 @@ func (w *Writer2) writeCompressedChunk() error {
 	return err
 }
 
-// writes a single chunk to the underlying writer.
+// writeChunk writes a single chunk to the underlying writer.
 func (w *Writer2) writeChunk() error {
 	u := int(uncompressedHeaderLen + w.encoder.Compressed())
 	c := headerLen(w.ctype) + w.buf.Len()

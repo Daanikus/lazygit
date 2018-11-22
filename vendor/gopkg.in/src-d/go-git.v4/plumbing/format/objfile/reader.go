@@ -65,7 +65,7 @@ func (r *Reader) Header() (t plumbing.ObjectType, size int64, err error) {
 	return
 }
 
-// readSlice reads one byte at a time from r until it encounters delim or an
+// readUntil readSlice reads one byte at a time from r until it encounters delim or an
 // error.
 func (r *Reader) readUntil(delim byte) ([]byte, error) {
 	var buf [1]byte

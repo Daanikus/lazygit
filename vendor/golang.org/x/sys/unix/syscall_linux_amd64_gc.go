@@ -9,5 +9,5 @@ package unix
 
 import "syscall"
 
-//go:noescape
+// gettimeofday go:noescape
 func gettimeofday(tv *Timeval) (err syscall.Errno)

@@ -10,15 +10,15 @@ type (
 		prev *node
 	}	
 )
-// Create a new stack
+// New Create a new stack
 func New() *Stack {
 	return &Stack{nil,0}
 }
-// Return the number of items in the stack
+// Len Return the number of items in the stack
 func (this *Stack) Len() int {
 	return this.length
 }
-// View the top item on the stack
+// Peek View the top item on the stack
 func (this *Stack) Peek() interface{} {
 	if this.length == 0 {
 		return nil

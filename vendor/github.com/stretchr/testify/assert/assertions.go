@@ -159,7 +159,7 @@ func CallerInfo() []string {
 	return callers
 }
 
-// Stolen from the `go test` tool.
+// isTest Stolen from the `go test` tool.
 // isTest tells whether name looks like a test (or benchmark, according to prefix).
 // It is a Test (say) if there is a character after Test that is not a lower-case letter.
 // We don't want TesticularCancer.
@@ -187,7 +187,7 @@ func messageFromMsgAndArgs(msgAndArgs ...interface{}) string {
 	return ""
 }
 
-// Aligns the provided message so that all lines after the first line start at the same location as the first line.
+// indentMessageLines Aligns the provided message so that all lines after the first line start at the same location as the first line.
 // Assumes that the first line starts at the correct location (after carriage return, tab, label, spacer and tab).
 // The longestLabelLen parameter specifies the length of the longest label in the output (required becaues this is the
 // basis on which the alignment occurs).
@@ -600,7 +600,7 @@ func NotEqual(t TestingT, expected, actual interface{}, msgAndArgs ...interface{
 
 }
 
-// containsElement try loop over the list check if the list includes the element.
+// includeElement try loop over the list check if the list includes the element.
 // return (false, false) if impossible.
 // return (true, false) if element was not found.
 // return (true, true) if element was found.

@@ -97,7 +97,7 @@ type optionsTupleValue struct {
 	Value string
 }
 
-// serialize a map of critical options or extensions
+// marshalTuples serialize a map of critical options or extensions
 // issue #10569 - per [PROTOCOL.certkeys] and SSH implementation,
 // we need two length prefixes for a non-empty string value
 func marshalTuples(tups map[string]string) []byte {
@@ -118,7 +118,7 @@ func marshalTuples(tups map[string]string) []byte {
 	return ret
 }
 
-// issue #10569 - per [PROTOCOL.certkeys] and SSH implementation,
+// parseTuples issue #10569 - per [PROTOCOL.certkeys] and SSH implementation,
 // we need two length prefixes for a non-empty option value
 func parseTuples(in []byte) (map[string]string, error) {
 	tups := map[string]string{}

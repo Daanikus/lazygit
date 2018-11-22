@@ -247,7 +247,7 @@ func (e *encoder) slicev(tag string, in reflect.Value) {
 	e.emit()
 }
 
-// isBase60 returns whether s is in base 60 notation as defined in YAML 1.1.
+// isBase60Float returns whether s is in base 60 notation as defined in YAML 1.1.
 //
 // The base 60 float notation in YAML 1.1 is a terrible idea and is unsupported
 // in YAML 1.2 and by this package, but these should be marshalled quoted for

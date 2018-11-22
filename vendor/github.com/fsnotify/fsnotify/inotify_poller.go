@@ -27,7 +27,7 @@ func emptyPoller(fd int) *fdPoller {
 	return poller
 }
 
-// Create a new inotify poller.
+// newFdPoller Create a new inotify poller.
 // This creates an inotify handler, and an epoll handler.
 func newFdPoller(fd int) (*fdPoller, error) {
 	var errno error
@@ -145,7 +145,7 @@ func (poller *fdPoller) wait() (bool, error) {
 	}
 }
 
-// Close the write end of the poller.
+// wake Close the write end of the poller.
 func (poller *fdPoller) wake() error {
 	buf := make([]byte, 1)
 	n, errno := unix.Write(poller.pipe[1], buf)

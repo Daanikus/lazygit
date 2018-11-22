@@ -43,7 +43,7 @@ func getLangID(s []byte) (langID, error) {
 	return getLangISO3(s)
 }
 
-// mapLang returns the mapped langID of id according to mapping m.
+// normLang returns the mapped langID of id according to mapping m.
 func normLang(id langID) (langID, langAliasType) {
 	k := sort.Search(len(langAliasMap), func(i int) bool {
 		return langAliasMap[i].from >= uint16(id)
@@ -77,7 +77,7 @@ func strToInt(s []byte) uint {
 	return v
 }
 
-// converts the given integer to the original ASCII string passed to strToInt.
+// intToStr converts the given integer to the original ASCII string passed to strToInt.
 // len(s) must match the number of characters obtained.
 func intToStr(v uint, s []byte) {
 	for i := len(s) - 1; i >= 0; i-- {

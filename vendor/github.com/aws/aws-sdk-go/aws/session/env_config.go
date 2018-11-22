@@ -152,7 +152,7 @@ func loadEnvConfig() envConfig {
 	return envConfigLoad(enableSharedConfig)
 }
 
-// loadEnvSharedConfig retrieves the SDK's environment configuration, and the
+// loadSharedEnvConfig retrieves the SDK's environment configuration, and the
 // SDK shared config. See `envConfig` for the values that will be retrieved.
 //
 // Loads the shared configuration in addition to the SDK's specific configuration.

@@ -87,7 +87,7 @@ func (t *treeNoder) Children() ([]noder.Noder, error) {
 	return transformChildren(parent)
 }
 
-// Returns the children of a tree as treenoders.
+// transformChildren Returns the children of a tree as treenoders.
 // Efficiency is key here.
 func transformChildren(t *Tree) ([]noder.Noder, error) {
 	var err error
@@ -123,7 +123,7 @@ func transformChildren(t *Tree) ([]noder.Noder, error) {
 	return ret, nil
 }
 
-// len(t.tree.Entries) != the number of elements walked by treewalker
+// NumChildren len(t.tree.Entries) != the number of elements walked by treewalker
 // for some reason because of empty directories, submodules, etc, so we
 // have to walk here.
 func (t *treeNoder) NumChildren() (int, error) {

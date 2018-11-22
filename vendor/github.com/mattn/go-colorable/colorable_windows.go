@@ -363,7 +363,7 @@ var color256 = map[int]int{
 	255: 0xeeeeee,
 }
 
-// `\033]0;TITLESTR\007`
+// doTitleSequence `\033]0;TITLESTR\007`
 func doTitleSequence(er *bytes.Reader) error {
 	var c byte
 	var err error

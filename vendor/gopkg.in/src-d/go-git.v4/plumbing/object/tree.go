@@ -295,7 +295,7 @@ func (from *Tree) Diff(to *Tree) (Changes, error) {
 	return DiffTree(from, to)
 }
 
-// Diff returns a list of changes between this tree and the provided one
+// DiffContext returns a list of changes between this tree and the provided one
 // Error will be returned if context expires
 // Provided context must be non nil
 func (from *Tree) DiffContext(ctx context.Context, to *Tree) (Changes, error) {
@@ -308,7 +308,7 @@ func (from *Tree) Patch(to *Tree) (*Patch, error) {
 	return from.PatchContext(context.Background(), to)
 }
 
-// Patch returns a slice of Patch objects with all the changes between trees
+// PatchContext returns a slice of Patch objects with all the changes between trees
 // in chunks. This representation can be used to create several diff outputs.
 // If context expires, an error will be returned
 // Provided context must be non-nil

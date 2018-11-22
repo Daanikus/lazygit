@@ -40,7 +40,7 @@ func isKeyStartChar(r rune) bool {
 	return !(isSpace(r) || r == '\r' || r == '\n' || r == eof)
 }
 
-// I'm not sure that this is correct
+// isKeyChar I'm not sure that this is correct
 func isKeyChar(r rune) bool {
 	// Keys start with the first character that isn't whitespace or [ and end
 	// with the last non-whitespace character before the equals sign. Keys

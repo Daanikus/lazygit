@@ -36,7 +36,7 @@ func IsTerminal(fd uintptr) bool {
 	return r != 0 && e == 0
 }
 
-// Check pipe name is used for cygwin/msys2 pty.
+// isCygwinPipeName Check pipe name is used for cygwin/msys2 pty.
 // Cygwin/MSYS2 PTY has a name like:
 //   \{cygwin,msys}-XXXXXXXXXXXXXXXX-ptyN-{from,to}-master
 func isCygwinPipeName(name string) bool {
@@ -68,7 +68,7 @@ func isCygwinPipeName(name string) bool {
 	return true
 }
 
-// IsCygwinTerminal() return true if the file descriptor is a cygwin or msys2
+// IsCygwinTerminal return true if the file descriptor is a cygwin or msys2
 // terminal.
 func IsCygwinTerminal(fd uintptr) bool {
 	if procGetFileInformationByHandleEx == nil {

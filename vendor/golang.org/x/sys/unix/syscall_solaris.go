@@ -347,7 +347,7 @@ func Futimesat(dirfd int, path string, tv []Timeval) error {
 	return futimesat(dirfd, pathp, (*[2]Timeval)(unsafe.Pointer(&tv[0])))
 }
 
-// Solaris doesn't have an futimes function because it allows NULL to be
+// Futimes Solaris doesn't have an futimes function because it allows NULL to be
 // specified as the path for futimesat. However, Go doesn't like
 // NULL-style string interfaces, so this simple wrapper is provided.
 func Futimes(fd int, tv []Timeval) error {

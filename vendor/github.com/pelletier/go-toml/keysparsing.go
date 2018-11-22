@@ -9,7 +9,7 @@ import (
 	"unicode"
 )
 
-// Convert the bare key group string to an array.
+// parseKey Convert the bare key group string to an array.
 // The input supports double quotation to allow "." inside the key name,
 // but escape sequences are not supported. Lexers must unescape them beforehand.
 func parseKey(key string) ([]string, error) {

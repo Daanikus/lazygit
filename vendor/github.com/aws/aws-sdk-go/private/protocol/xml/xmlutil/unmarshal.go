@@ -220,7 +220,7 @@ func parseMapEntry(r reflect.Value, node *XMLNode, tag reflect.StructTag) error 
 	return nil
 }
 
-// parseScaller deserializes an XMLNode value into a concrete type based on the
+// parseScalar parseScaller deserializes an XMLNode value into a concrete type based on the
 // interface type of r.
 //
 // Error is returned if the deserialization fails due to invalid type conversion,

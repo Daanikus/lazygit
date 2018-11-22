@@ -139,7 +139,7 @@ func (gui *Gui) renderBranchesOptions(g *gocui.Gui) error {
 	return gui.renderGlobalOptions(g)
 }
 
-// may want to standardise how these select methods work
+// handleBranchSelect may want to standardise how these select methods work
 func (gui *Gui) handleBranchSelect(g *gocui.Gui, v *gocui.View) error {
 	if err := gui.renderBranchesOptions(g); err != nil {
 		return err
@@ -159,7 +159,7 @@ func (gui *Gui) handleBranchSelect(g *gocui.Gui, v *gocui.View) error {
 	return nil
 }
 
-// gui.refreshStatus is called at the end of this because that's when we can
+// refreshBranches gui.refreshStatus is called at the end of this because that's when we can
 // be sure there is a state.Branches array to pick the current branch from
 func (gui *Gui) refreshBranches(g *gocui.Gui) error {
 	g.Update(func(g *gocui.Gui) error {

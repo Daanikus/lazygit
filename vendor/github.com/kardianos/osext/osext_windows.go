@@ -17,7 +17,7 @@ var (
 	getModuleFileNameProc = kernel.MustFindProc("GetModuleFileNameW")
 )
 
-// GetModuleFileName() with hModule = NULL
+// executable GetModuleFileName() with hModule = NULL
 func executable() (exePath string, err error) {
 	return getModuleFileName()
 }

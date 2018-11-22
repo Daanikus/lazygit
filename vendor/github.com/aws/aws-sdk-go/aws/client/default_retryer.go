@@ -82,7 +82,7 @@ func (d DefaultRetryer) shouldThrottle(r *request.Request) bool {
 	return true
 }
 
-// This will look in the Retry-After header, RFC 7231, for how long
+// getRetryDelay This will look in the Retry-After header, RFC 7231, for how long
 // it will wait before attempting another request
 func getRetryDelay(r *request.Request) (time.Duration, bool) {
 	if !canUseRetryAfterHeader(r) {
@@ -102,7 +102,7 @@ func getRetryDelay(r *request.Request) (time.Duration, bool) {
 	return time.Duration(delay) * time.Second, true
 }
 
-// Will look at the status code to see if the retry header pertains to
+// canUseRetryAfterHeader Will look at the status code to see if the retry header pertains to
 // the status code.
 func canUseRetryAfterHeader(r *request.Request) bool {
 	switch r.HTTPResponse.StatusCode {

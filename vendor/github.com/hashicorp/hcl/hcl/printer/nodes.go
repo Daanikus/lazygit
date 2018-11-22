@@ -782,7 +782,7 @@ func trace(p *printer, msg string) *printer {
 	return p
 }
 
-// Usage pattern: defer un(trace(p, "..."))
+// un Usage pattern: defer un(trace(p, "..."))
 func un(p *printer) {
 	p.indentTrace--
 	p.printTrace(")")

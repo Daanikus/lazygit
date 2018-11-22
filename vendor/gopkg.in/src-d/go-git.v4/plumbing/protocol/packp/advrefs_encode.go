@@ -93,7 +93,7 @@ func encodePrefix(e *advRefsEncoder) encoderStateFn {
 	return encodeFirstLine
 }
 
-// Adds the first pkt-line payload: head hash, head ref and capabilities.
+// encodeFirstLine Adds the first pkt-line payload: head hash, head ref and capabilities.
 // If HEAD ref is not found, the first reference ordered in increasing order will be used.
 // If there aren't HEAD neither refs, the first line will be "PKT-LINE(zero-id SP "capabilities^{}" NUL capability-list)".
 // See: https://github.com/git/git/blob/master/Documentation/technical/pack-protocol.txt
@@ -125,7 +125,7 @@ func formatCaps(c *capability.List) string {
 	return c.String()
 }
 
-// Adds the (sorted) refs: hash SP refname EOL
+// encodeRefs Adds the (sorted) refs: hash SP refname EOL
 // and their peeled refs if any.
 func encodeRefs(e *advRefsEncoder) encoderStateFn {
 	for _, r := range e.sortedRefs {
@@ -148,7 +148,7 @@ func encodeRefs(e *advRefsEncoder) encoderStateFn {
 	return encodeShallow
 }
 
-// Adds the (sorted) shallows: "shallow" SP hash EOL
+// encodeShallow Adds the (sorted) shallows: "shallow" SP hash EOL
 func encodeShallow(e *advRefsEncoder) encoderStateFn {
 	sorted := sortShallows(e.data.Shallows)
 	for _, hash := range sorted {

@@ -34,7 +34,7 @@ var encOptsDefaults = encOpts{
 var timeType = reflect.TypeOf(time.Time{})
 var marshalerType = reflect.TypeOf(new(Marshaler)).Elem()
 
-// Check if the given marshall type maps to a Tree primitive
+// isPrimitive Check if the given marshall type maps to a Tree primitive
 func isPrimitive(mtype reflect.Type) bool {
 	switch mtype.Kind() {
 	case reflect.Ptr:
@@ -56,7 +56,7 @@ func isPrimitive(mtype reflect.Type) bool {
 	}
 }
 
-// Check if the given marshall type maps to a Tree slice
+// isTreeSlice Check if the given marshall type maps to a Tree slice
 func isTreeSlice(mtype reflect.Type) bool {
 	switch mtype.Kind() {
 	case reflect.Slice:
@@ -66,7 +66,7 @@ func isTreeSlice(mtype reflect.Type) bool {
 	}
 }
 
-// Check if the given marshall type maps to a non-Tree slice
+// isOtherSlice Check if the given marshall type maps to a non-Tree slice
 func isOtherSlice(mtype reflect.Type) bool {
 	switch mtype.Kind() {
 	case reflect.Ptr:
@@ -78,7 +78,7 @@ func isOtherSlice(mtype reflect.Type) bool {
 	}
 }
 
-// Check if the given marshall type maps to a Tree
+// isTree Check if the given marshall type maps to a Tree
 func isTree(mtype reflect.Type) bool {
 	switch mtype.Kind() {
 	case reflect.Map:
@@ -217,7 +217,7 @@ func (e *Encoder) marshal(v interface{}) ([]byte, error) {
 	return buf.Bytes(), err
 }
 
-// Convert given marshal struct or map value to toml tree
+// valueToTree Convert given marshal struct or map value to toml tree
 func (e *Encoder) valueToTree(mtype reflect.Type, mval reflect.Value) (*Tree, error) {
 	if mtype.Kind() == reflect.Ptr {
 		return e.valueToTree(mtype.Elem(), mval.Elem())
@@ -262,7 +262,7 @@ func (e *Encoder) valueToTree(mtype reflect.Type, mval reflect.Value) (*Tree, er
 	return tval, nil
 }
 
-// Convert given marshal slice to slice of Toml trees
+// valueToTreeSlice Convert given marshal slice to slice of Toml trees
 func (e *Encoder) valueToTreeSlice(mtype reflect.Type, mval reflect.Value) ([]*Tree, error) {
 	tval := make([]*Tree, mval.Len(), mval.Len())
 	for i := 0; i < mval.Len(); i++ {
@@ -275,7 +275,7 @@ func (e *Encoder) valueToTreeSlice(mtype reflect.Type, mval reflect.Value) ([]*T
 	return tval, nil
 }
 
-// Convert given marshal slice to slice of toml values
+// valueToOtherSlice Convert given marshal slice to slice of toml values
 func (e *Encoder) valueToOtherSlice(mtype reflect.Type, mval reflect.Value) (interface{}, error) {
 	tval := make([]interface{}, mval.Len(), mval.Len())
 	for i := 0; i < mval.Len(); i++ {
@@ -288,7 +288,7 @@ func (e *Encoder) valueToOtherSlice(mtype reflect.Type, mval reflect.Value) (int
 	return tval, nil
 }
 
-// Convert given marshal value to toml value
+// valueToToml Convert given marshal value to toml value
 func (e *Encoder) valueToToml(mtype reflect.Type, mval reflect.Value) (interface{}, error) {
 	if mtype.Kind() == reflect.Ptr {
 		return e.valueToToml(mtype.Elem(), mval.Elem())
@@ -399,7 +399,7 @@ func (d *Decoder) unmarshal(v interface{}) error {
 	return nil
 }
 
-// Convert toml tree to marshal struct or map, using marshal type
+// valueFromTree Convert toml tree to marshal struct or map, using marshal type
 func (d *Decoder) valueFromTree(mtype reflect.Type, tval *Tree) (reflect.Value, error) {
 	if mtype.Kind() == reflect.Ptr {
 		return d.unwrapPointer(mtype, tval)
@@ -444,7 +444,7 @@ func (d *Decoder) valueFromTree(mtype reflect.Type, tval *Tree) (reflect.Value, 
 	return mval, nil
 }
 
-// Convert toml value to marshal struct/map slice, using marshal type
+// valueFromTreeSlice Convert toml value to marshal struct/map slice, using marshal type
 func (d *Decoder) valueFromTreeSlice(mtype reflect.Type, tval []*Tree) (reflect.Value, error) {
 	mval := reflect.MakeSlice(mtype, len(tval), len(tval))
 	for i := 0; i < len(tval); i++ {
@@ -457,7 +457,7 @@ func (d *Decoder) valueFromTreeSlice(mtype reflect.Type, tval []*Tree) (reflect.
 	return mval, nil
 }
 
-// Convert toml value to marshal primitive slice, using marshal type
+// valueFromOtherSlice Convert toml value to marshal primitive slice, using marshal type
 func (d *Decoder) valueFromOtherSlice(mtype reflect.Type, tval []interface{}) (reflect.Value, error) {
 	mval := reflect.MakeSlice(mtype, len(tval), len(tval))
 	for i := 0; i < len(tval); i++ {
@@ -470,7 +470,7 @@ func (d *Decoder) valueFromOtherSlice(mtype reflect.Type, tval []interface{}) (r
 	return mval, nil
 }
 
-// Convert toml value to marshal value, using marshal type
+// valueFromToml Convert toml value to marshal value, using marshal type
 func (d *Decoder) valueFromToml(mtype reflect.Type, tval interface{}) (reflect.Value, error) {
 	if mtype.Kind() == reflect.Ptr {
 		return d.unwrapPointer(mtype, tval)

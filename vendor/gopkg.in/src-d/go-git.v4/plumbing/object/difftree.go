@@ -14,7 +14,7 @@ func DiffTree(a, b *Tree) (Changes, error) {
 	return DiffTreeContext(context.Background(), a, b)
 }
 
-// DiffTree compares the content and mode of the blobs found via two
+// DiffTreeContext compares the content and mode of the blobs found via two
 // tree objects. Provided context must be non-nil.
 // An error will be return if context expires
 func DiffTreeContext(ctx context.Context, a, b *Tree) (Changes, error) {

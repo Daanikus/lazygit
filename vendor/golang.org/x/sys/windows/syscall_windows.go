@@ -1083,7 +1083,7 @@ func Getppid() (ppid int) {
 	return int(pe.ParentProcessID)
 }
 
-// TODO(brainman): fix all needed for os
+// Fchdir TODO(brainman): fix all needed for os
 func Fchdir(fd Handle) (err error)             { return syscall.EWINDOWS }
 func Link(oldpath, newpath string) (err error) { return syscall.EWINDOWS }
 func Symlink(path, link string) (err error)    { return syscall.EWINDOWS }

@@ -39,7 +39,7 @@ func (ss *streamSafe) first(p Properties) {
 	*ss = streamSafe(p.nTrailingNonStarters())
 }
 
-// insert returns a ssState value to indicate whether a rune represented by p
+// next insert returns a ssState value to indicate whether a rune represented by p
 // can be inserted.
 func (ss *streamSafe) next(p Properties) ssState {
 	if *ss > maxNonStarters {
@@ -377,7 +377,7 @@ func isHangulString(b string) bool {
 	return b1 == hangulEnd1 && b[2] < hangulEnd2
 }
 
-// Caller must ensure len(b) >= 2.
+// isJamoVT Caller must ensure len(b) >= 2.
 func isJamoVT(b []byte) bool {
 	// True if (rune & 0xff00) == jamoLBase
 	return b[0] == jamoLBase0 && (b[1]&0xFC) == jamoLBase1

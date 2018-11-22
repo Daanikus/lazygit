@@ -137,7 +137,7 @@ func uniqueByName(branches []*commands.Branch) []*commands.Branch {
 	return finalBranches
 }
 
-// A line will have the form '10 days ago master' so we need to strip out the
+// branchInfoFromLine A line will have the form '10 days ago master' so we need to strip out the
 // useful information from that into timeNumber, timeUnit, and branchName
 func branchInfoFromLine(line string) (string, string, string) {
 	r := regexp.MustCompile("\\|.*\\s")

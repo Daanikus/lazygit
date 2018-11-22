@@ -28,7 +28,7 @@ func (b *buffer) Cap() int {
 	return len(b.data) - 1
 }
 
-// Resets the buffer. The front and rear index are set to zero.
+// Reset the buffer. The front and rear index are set to zero.
 func (b *buffer) Reset() {
 	b.front = 0
 	b.rear = 0

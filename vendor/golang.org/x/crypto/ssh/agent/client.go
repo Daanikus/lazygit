@@ -460,7 +460,7 @@ type ed25519KeyMsg struct {
 	Constraints []byte `ssh:"rest"`
 }
 
-// Insert adds a private key to the agent.
+// insertKey adds a private key to the agent.
 func (c *client) insertKey(s interface{}, comment string, constraints []byte) error {
 	var req []byte
 	switch k := s.(type) {

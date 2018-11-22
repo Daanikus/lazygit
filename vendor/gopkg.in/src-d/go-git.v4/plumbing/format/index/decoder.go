@@ -191,7 +191,7 @@ func (d *Decoder) doReadEntryName(len uint16) (string, error) {
 	return string(name), nil
 }
 
-// Index entries are padded out to the next 8 byte alignment
+// padEntry Index entries are padded out to the next 8 byte alignment
 // for historical reasons related to how C Git read the files.
 func (d *Decoder) padEntry(idx *Index, e *Entry, read int) error {
 	if idx.Version == 4 {

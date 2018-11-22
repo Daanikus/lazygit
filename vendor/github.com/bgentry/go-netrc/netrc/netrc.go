@@ -295,7 +295,7 @@ func scanLinesKeepPrefix(data []byte, atEOF bool) (advance int, token []byte, er
 	return 0, nil, nil
 }
 
-// scanWordsKeepPrefix is a split function for a Scanner that returns each
+// scanTokensKeepPrefix is a split function for a Scanner that returns each
 // space-separated word of text, with prefixing spaces included. It will never
 // return an empty string. The definition of space is set by unicode.IsSpace.
 //

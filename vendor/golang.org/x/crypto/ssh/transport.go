@@ -108,7 +108,7 @@ func (t *transport) printPacket(p []byte, write bool) {
 	log.Println(what, who, p[0])
 }
 
-// Read and decrypt next packet.
+// readPacket and decrypt next packet.
 func (t *transport) readPacket() (p []byte, err error) {
 	for {
 		p, err = t.reader.readPacket(t.bufReader)
@@ -233,7 +233,7 @@ var (
 	clientKeys = direction{[]byte{'A'}, []byte{'C'}, []byte{'E'}}
 )
 
-// setupKeys sets the cipher and MAC keys from kex.K, kex.H and sessionId, as
+// newPacketCipher setupKeys sets the cipher and MAC keys from kex.K, kex.H and sessionId, as
 // described in RFC 4253, section 6.4. direction should either be serverKeys
 // (to setup server->client keys) or clientKeys (for client->server keys).
 func newPacketCipher(d direction, algs directionAlgorithms, kex *kexResult) (packetCipher, error) {
@@ -280,7 +280,7 @@ func generateKeyMaterial(out, tag []byte, r *kexResult) {
 
 const packageVersion = "SSH-2.0-Go"
 
-// Sends and receives a version line.  The versionLine string should
+// exchangeVersions Sends and receives a version line.  The versionLine string should
 // be US ASCII, start with "SSH-2.0-", and should not include a
 // newline. exchangeVersions returns the other side's version line.
 func exchangeVersions(rw io.ReadWriter, versionLine []byte) (them []byte, err error) {
@@ -307,7 +307,7 @@ func exchangeVersions(rw io.ReadWriter, versionLine []byte) (them []byte, err er
 // chars
 const maxVersionStringBytes = 255
 
-// Read version string as specified by RFC 4253, section 4.2.
+// readVersion version string as specified by RFC 4253, section 4.2.
 func readVersion(r io.Reader) ([]byte, error) {
 	versionString := make([]byte, 0, 64)
 	var ok bool

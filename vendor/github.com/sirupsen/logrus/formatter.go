@@ -18,7 +18,7 @@ type Formatter interface {
 	Format(*Entry) ([]byte, error)
 }
 
-// This is to not silently overwrite `time`, `msg` and `level` fields when
+// prefixFieldClashes This is to not silently overwrite `time`, `msg` and `level` fields when
 // dumping it. If this code wasn't there doing:
 //
 //  logrus.WithField("level", 1).Info("hello")

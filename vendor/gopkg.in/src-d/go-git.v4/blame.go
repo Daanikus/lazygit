@@ -149,7 +149,7 @@ type blame struct {
 	graph [][]*object.Commit
 }
 
-// calculate the history of a file "path", starting from commit "from", sorted by commit date.
+// fillRevs calculate the history of a file "path", starting from commit "from", sorted by commit date.
 func (b *blame) fillRevs() error {
 	var err error
 
@@ -157,7 +157,7 @@ func (b *blame) fillRevs() error {
 	return err
 }
 
-// build graph of a file from its revision history
+// fillGraphAndData build graph of a file from its revision history
 func (b *blame) fillGraphAndData() error {
 	//TODO: not all commits are needed, only the current rev and the prev
 	b.graph = make([][]*object.Commit, len(b.revs))
@@ -206,7 +206,7 @@ func (b *blame) sliceGraph(i int) []*object.Commit {
 	return result
 }
 
-// Assigns origin to vertexes in current (c) rev from data in its previous (p)
+// assignOrigin Assigns origin to vertexes in current (c) rev from data in its previous (p)
 // revision
 func (b *blame) assignOrigin(c, p int) {
 	// assign origin based on diff info
@@ -262,12 +262,12 @@ func (b *blame) GoString() string {
 	return buf.String()
 }
 
-// utility function to pretty print the author.
+// prettyPrintAuthor utility function to pretty print the author.
 func prettyPrintAuthor(c *object.Commit) string {
 	return fmt.Sprintf("%s %s", c.Author.Name, c.Author.When.Format("2006-01-02"))
 }
 
-// utility function to calculate the number of runes needed
+// maxAuthorLength utility function to calculate the number of runes needed
 // to print the longest author name in the blame of a file.
 func (b *blame) maxAuthorLength() int {
 	memo := make(map[plumbing.Hash]struct{}, len(b.graph)-1)

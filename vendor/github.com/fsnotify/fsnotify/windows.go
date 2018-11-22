@@ -218,7 +218,7 @@ func getIno(path string) (ino *inode, err error) {
 	return ino, nil
 }
 
-// Must run within the I/O thread.
+// get Must run within the I/O thread.
 func (m watchMap) get(ino *inode) *watch {
 	if i := m[ino.volume]; i != nil {
 		return i[ino.index]
@@ -226,7 +226,7 @@ func (m watchMap) get(ino *inode) *watch {
 	return nil
 }
 
-// Must run within the I/O thread.
+// set Must run within the I/O thread.
 func (m watchMap) set(ino *inode, watch *watch) {
 	i := m[ino.volume]
 	if i == nil {
@@ -236,7 +236,7 @@ func (m watchMap) set(ino *inode, watch *watch) {
 	i[ino.index] = watch
 }
 
-// Must run within the I/O thread.
+// addWatch Must run within the I/O thread.
 func (w *Watcher) addWatch(pathname string, flags uint64) error {
 	dir, err := getDir(pathname)
 	if err != nil {
@@ -285,7 +285,7 @@ func (w *Watcher) addWatch(pathname string, flags uint64) error {
 	return nil
 }
 
-// Must run within the I/O thread.
+// remWatch Must run within the I/O thread.
 func (w *Watcher) remWatch(pathname string) error {
 	dir, err := getDir(pathname)
 	if err != nil {
@@ -312,7 +312,7 @@ func (w *Watcher) remWatch(pathname string) error {
 	return w.startRead(watch)
 }
 
-// Must run within the I/O thread.
+// deleteWatch Must run within the I/O thread.
 func (w *Watcher) deleteWatch(watch *watch) {
 	for name, mask := range watch.names {
 		if mask&provisional == 0 {
@@ -328,7 +328,7 @@ func (w *Watcher) deleteWatch(watch *watch) {
 	}
 }
 
-// Must run within the I/O thread.
+// startRead Must run within the I/O thread.
 func (w *Watcher) startRead(watch *watch) error {
 	if e := syscall.CancelIo(watch.ino.handle); e != nil {
 		w.Errors <- os.NewSyscallError("CancelIo", e)

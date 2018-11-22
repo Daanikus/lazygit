@@ -59,7 +59,7 @@ func distBits(dist uint32) int {
 	return 36 - nlz32(dist)
 }
 
-// newDistCodec creates a new distance codec.
+// init newDistCodec creates a new distance codec.
 func (dc *distCodec) init() {
 	for i := range dc.posSlotCodecs {
 		dc.posSlotCodecs[i] = makeTreeCodec(posSlotBits)

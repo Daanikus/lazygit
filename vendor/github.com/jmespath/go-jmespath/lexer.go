@@ -215,7 +215,7 @@ loop:
 	return tokens, nil
 }
 
-// Consume characters until the ending rune "r" is reached.
+// consumeUntil characters until the ending rune "r" is reached.
 // If the end of the expression is reached before seeing the
 // terminating rune "r", then an error is returned.
 // If no error occurs then the matching substring is returned.
@@ -301,7 +301,7 @@ func (lexer *Lexer) syntaxError(msg string) SyntaxError {
 	}
 }
 
-// Checks for a two char token, otherwise matches a single character
+// matchOrElse Checks for a two char token, otherwise matches a single character
 // token. This is used whenever a two char token overlaps a single
 // char token, e.g. "||" -> tPipe, "|" -> tOr.
 func (lexer *Lexer) matchOrElse(first rune, second rune, matchedType tokType, singleCharType tokType) token {

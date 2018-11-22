@@ -613,7 +613,7 @@ func (s *Scanner) err(msg string) {
 	fmt.Fprintf(os.Stderr, "%s: %s\n", pos, msg)
 }
 
-// isHexadecimal returns true if the given rune is a letter
+// isLetter isHexadecimal returns true if the given rune is a letter
 func isLetter(ch rune) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_' || ch >= 0x80 && unicode.IsLetter(ch)
 }

@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-// Encodes a string to a TOML-compliant multi-line string value
+// encodeMultilineTomlString Encodes a string to a TOML-compliant multi-line string value
 // This function is a clone of the existing encodeTomlString function, except that whitespace characters
 // are preserved. Quotation marks and backslashes are also not escaped.
 func encodeMultilineTomlString(value string) string {
@@ -46,7 +46,7 @@ func encodeMultilineTomlString(value string) string {
 	return b.String()
 }
 
-// Encodes a string to a TOML-compliant string value
+// encodeTomlString Encodes a string to a TOML-compliant string value
 func encodeTomlString(value string) string {
 	var b bytes.Buffer
 

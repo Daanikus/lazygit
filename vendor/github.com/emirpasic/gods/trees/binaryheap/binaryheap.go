@@ -112,13 +112,13 @@ func (heap *Heap) String() string {
 	return str
 }
 
-// Performs the "bubble down" operation. This is to place the element that is at the root
+// bubbleDown Performs the "bubble down" operation. This is to place the element that is at the root
 // of the heap in its correct place so that the heap maintains the min/max-heap order property.
 func (heap *Heap) bubbleDown() {
 	heap.bubbleDownIndex(0)
 }
 
-// Performs the "bubble down" operation. This is to place the element that is at the index
+// bubbleDownIndex Performs the "bubble down" operation. This is to place the element that is at the index
 // of the heap in its correct place so that the heap maintains the min/max-heap order property.
 func (heap *Heap) bubbleDownIndex(index int) {
 	size := heap.list.Size()
@@ -141,7 +141,7 @@ func (heap *Heap) bubbleDownIndex(index int) {
 	}
 }
 
-// Performs the "bubble up" operation. This is to place a newly inserted
+// bubbleUp Performs the "bubble up" operation. This is to place a newly inserted
 // element (i.e. last element in the list) in its correct place so that
 // the heap maintains the min/max-heap order property.
 func (heap *Heap) bubbleUp() {
@@ -157,7 +157,7 @@ func (heap *Heap) bubbleUp() {
 	}
 }
 
-// Check that the index is within bounds of the list
+// withinRange Check that the index is within bounds of the list
 func (heap *Heap) withinRange(index int) bool {
 	return index >= 0 && index < heap.list.Size()
 }

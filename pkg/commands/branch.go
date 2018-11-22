@@ -33,7 +33,7 @@ func (b *Branch) GetColor() color.Attribute {
 	}
 }
 
-// expected to return feature/bugfix/hotfix or blank string
+// getType expected to return feature/bugfix/hotfix or blank string
 func (b *Branch) getType() string {
 	return strings.Split(b.Name, "/")[0]
 }

@@ -409,7 +409,7 @@ func (w *Watcher) watchDirectoryFiles(dirPath string) error {
 	return nil
 }
 
-// sendDirectoryEvents searches the directory for newly created files
+// sendDirectoryChangeEvents searches the directory for newly created files
 // and sends them over the event channel. This functionality is to have
 // the BSD version of fsnotify match Linux inotify which provides a
 // create event for files created in a watched directory.
@@ -435,7 +435,7 @@ func (w *Watcher) sendDirectoryChangeEvents(dirPath string) {
 	}
 }
 
-// sendFileCreatedEvent sends a create event if the file isn't already being tracked.
+// sendFileCreatedEventIfNew sends a create event if the file isn't already being tracked.
 func (w *Watcher) sendFileCreatedEventIfNew(filePath string, fileInfo os.FileInfo) (err error) {
 	w.mu.Lock()
 	_, doesExist := w.fileExists[filePath]

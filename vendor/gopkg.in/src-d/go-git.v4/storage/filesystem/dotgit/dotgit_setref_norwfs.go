@@ -8,7 +8,7 @@ import (
 	"gopkg.in/src-d/go-git.v4/plumbing"
 )
 
-// There are some filesystems that don't support opening files in RDWD mode.
+// setRef There are some filesystems that don't support opening files in RDWD mode.
 // In these filesystems the standard SetRef function can not be used as i
 // reads the reference file to check that it's not modified before updating it.
 //

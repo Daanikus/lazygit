@@ -480,14 +480,14 @@ import (
 //      BLOCK-END
 //
 
-// Ensure that the buffer contains the required number of characters.
+// cache Ensure that the buffer contains the required number of characters.
 // Return true on success, false on failure (reader error or memory error).
 func cache(parser *yaml_parser_t, length int) bool {
 	// [Go] This was inlined: !cache(A, B) -> unread < B && !update(A, B)
 	return parser.unread >= length || yaml_parser_update_buffer(parser, length)
 }
 
-// Advance the buffer pointer.
+// skip Advance the buffer pointer.
 func skip(parser *yaml_parser_t) {
 	parser.mark.index++
 	parser.mark.column++
@@ -511,7 +511,7 @@ func skip_line(parser *yaml_parser_t) {
 	}
 }
 
-// Copy a character to a string buffer and advance pointers.
+// read Copy a character to a string buffer and advance pointers.
 func read(parser *yaml_parser_t, s []byte) []byte {
 	w := width(parser.buffer[parser.buffer_pos])
 	if w == 0 {
@@ -534,7 +534,7 @@ func read(parser *yaml_parser_t, s []byte) []byte {
 	return s
 }
 
-// Copy a line break character to a string buffer and advance pointers.
+// read_line Copy a line break character to a string buffer and advance pointers.
 func read_line(parser *yaml_parser_t, s []byte) []byte {
 	buf := parser.buffer
 	pos := parser.buffer_pos
@@ -567,7 +567,7 @@ func read_line(parser *yaml_parser_t, s []byte) []byte {
 	return s
 }
 
-// Get the next token.
+// yaml_parser_scan Get the next token.
 func yaml_parser_scan(parser *yaml_parser_t, token *yaml_token_t) bool {
 	// Erase the token object.
 	*token = yaml_token_t{} // [Go] Is this necessary?
@@ -596,7 +596,7 @@ func yaml_parser_scan(parser *yaml_parser_t, token *yaml_token_t) bool {
 	return true
 }
 
-// Set the scanner error and return false.
+// yaml_parser_set_scanner_error the scanner error and return false.
 func yaml_parser_set_scanner_error(parser *yaml_parser_t, context string, context_mark yaml_mark_t, problem string) bool {
 	parser.error = yaml_SCANNER_ERROR
 	parser.context = context
@@ -621,7 +621,7 @@ func trace(args ...interface{}) func() {
 	return func() { fmt.Println(pargs...) }
 }
 
-// Ensure that the tokens queue contains at least one token which can be
+// yaml_parser_fetch_more_tokens Ensure that the tokens queue contains at least one token which can be
 // returned to the Parser.
 func yaml_parser_fetch_more_tokens(parser *yaml_parser_t) bool {
 	// While we need more tokens to fetch, do it.
@@ -661,7 +661,7 @@ func yaml_parser_fetch_more_tokens(parser *yaml_parser_t) bool {
 	return true
 }
 
-// The dispatcher for token fetchers.
+// yaml_parser_fetch_next_token The dispatcher for token fetchers.
 func yaml_parser_fetch_next_token(parser *yaml_parser_t) bool {
 	// Ensure that the buffer is initialized.
 	if parser.unread < 1 && !yaml_parser_update_buffer(parser, 1) {
@@ -837,7 +837,7 @@ func yaml_parser_fetch_next_token(parser *yaml_parser_t) bool {
 		"found character that cannot start any token")
 }
 
-// Check the list of potential simple keys and remove the positions that
+// yaml_parser_stale_simple_keys Check the list of potential simple keys and remove the positions that
 // cannot contain simple keys anymore.
 func yaml_parser_stale_simple_keys(parser *yaml_parser_t) bool {
 	// Check for a potential simple key for each flow level.
@@ -862,7 +862,7 @@ func yaml_parser_stale_simple_keys(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Check if a simple key may start at the current position and add it if
+// yaml_parser_save_simple_key Check if a simple key may start at the current position and add it if
 // needed.
 func yaml_parser_save_simple_key(parser *yaml_parser_t) bool {
 	// A simple key is required at the current position if the scanner is in
@@ -890,7 +890,7 @@ func yaml_parser_save_simple_key(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Remove a potential simple key at the current flow level.
+// yaml_parser_remove_simple_key a potential simple key at the current flow level.
 func yaml_parser_remove_simple_key(parser *yaml_parser_t) bool {
 	i := len(parser.simple_keys) - 1
 	if parser.simple_keys[i].possible {
@@ -906,7 +906,7 @@ func yaml_parser_remove_simple_key(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Increase the flow level and resize the simple key list if needed.
+// yaml_parser_increase_flow_level the flow level and resize the simple key list if needed.
 func yaml_parser_increase_flow_level(parser *yaml_parser_t) bool {
 	// Reset the simple key on the next level.
 	parser.simple_keys = append(parser.simple_keys, yaml_simple_key_t{})
@@ -916,7 +916,7 @@ func yaml_parser_increase_flow_level(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Decrease the flow level.
+// yaml_parser_decrease_flow_level the flow level.
 func yaml_parser_decrease_flow_level(parser *yaml_parser_t) bool {
 	if parser.flow_level > 0 {
 		parser.flow_level--
@@ -925,7 +925,7 @@ func yaml_parser_decrease_flow_level(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Push the current indentation level to the stack and set the new level
+// yaml_parser_roll_indent Push the current indentation level to the stack and set the new level
 // the current column is greater than the indentation level.  In this case,
 // append or insert the specified token into the token queue.
 func yaml_parser_roll_indent(parser *yaml_parser_t, column, number int, typ yaml_token_type_t, mark yaml_mark_t) bool {
@@ -954,7 +954,7 @@ func yaml_parser_roll_indent(parser *yaml_parser_t, column, number int, typ yaml
 	return true
 }
 
-// Pop indentation levels from the indents stack until the current level
+// yaml_parser_unroll_indent Pop indentation levels from the indents stack until the current level
 // becomes less or equal to the column.  For each indentation level, append
 // the BLOCK-END token.
 func yaml_parser_unroll_indent(parser *yaml_parser_t, column int) bool {
@@ -980,7 +980,7 @@ func yaml_parser_unroll_indent(parser *yaml_parser_t, column int) bool {
 	return true
 }
 
-// Initialize the scanner and produce the STREAM-START token.
+// yaml_parser_fetch_stream_start Initialize the scanner and produce the STREAM-START token.
 func yaml_parser_fetch_stream_start(parser *yaml_parser_t) bool {
 
 	// Set the initial indentation.
@@ -1006,7 +1006,7 @@ func yaml_parser_fetch_stream_start(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the STREAM-END token and shut down the scanner.
+// yaml_parser_fetch_stream_end Produce the STREAM-END token and shut down the scanner.
 func yaml_parser_fetch_stream_end(parser *yaml_parser_t) bool {
 
 	// Force new line.
@@ -1037,7 +1037,7 @@ func yaml_parser_fetch_stream_end(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce a VERSION-DIRECTIVE or TAG-DIRECTIVE token.
+// yaml_parser_fetch_directive Produce a VERSION-DIRECTIVE or TAG-DIRECTIVE token.
 func yaml_parser_fetch_directive(parser *yaml_parser_t) bool {
 	// Reset the indentation level.
 	if !yaml_parser_unroll_indent(parser, -1) {
@@ -1061,7 +1061,7 @@ func yaml_parser_fetch_directive(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the DOCUMENT-START or DOCUMENT-END token.
+// yaml_parser_fetch_document_indicator Produce the DOCUMENT-START or DOCUMENT-END token.
 func yaml_parser_fetch_document_indicator(parser *yaml_parser_t, typ yaml_token_type_t) bool {
 	// Reset the indentation level.
 	if !yaml_parser_unroll_indent(parser, -1) {
@@ -1095,7 +1095,7 @@ func yaml_parser_fetch_document_indicator(parser *yaml_parser_t, typ yaml_token_
 	return true
 }
 
-// Produce the FLOW-SEQUENCE-START or FLOW-MAPPING-START token.
+// yaml_parser_fetch_flow_collection_start Produce the FLOW-SEQUENCE-START or FLOW-MAPPING-START token.
 func yaml_parser_fetch_flow_collection_start(parser *yaml_parser_t, typ yaml_token_type_t) bool {
 	// The indicators '[' and '{' may start a simple key.
 	if !yaml_parser_save_simple_key(parser) {
@@ -1126,7 +1126,7 @@ func yaml_parser_fetch_flow_collection_start(parser *yaml_parser_t, typ yaml_tok
 	return true
 }
 
-// Produce the FLOW-SEQUENCE-END or FLOW-MAPPING-END token.
+// yaml_parser_fetch_flow_collection_end Produce the FLOW-SEQUENCE-END or FLOW-MAPPING-END token.
 func yaml_parser_fetch_flow_collection_end(parser *yaml_parser_t, typ yaml_token_type_t) bool {
 	// Reset any potential simple key on the current flow level.
 	if !yaml_parser_remove_simple_key(parser) {
@@ -1158,7 +1158,7 @@ func yaml_parser_fetch_flow_collection_end(parser *yaml_parser_t, typ yaml_token
 	return true
 }
 
-// Produce the FLOW-ENTRY token.
+// yaml_parser_fetch_flow_entry Produce the FLOW-ENTRY token.
 func yaml_parser_fetch_flow_entry(parser *yaml_parser_t) bool {
 	// Reset any potential simple keys on the current flow level.
 	if !yaml_parser_remove_simple_key(parser) {
@@ -1183,7 +1183,7 @@ func yaml_parser_fetch_flow_entry(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the BLOCK-ENTRY token.
+// yaml_parser_fetch_block_entry Produce the BLOCK-ENTRY token.
 func yaml_parser_fetch_block_entry(parser *yaml_parser_t) bool {
 	// Check if the scanner is in the block context.
 	if parser.flow_level == 0 {
@@ -1225,7 +1225,7 @@ func yaml_parser_fetch_block_entry(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the KEY token.
+// yaml_parser_fetch_key Produce the KEY token.
 func yaml_parser_fetch_key(parser *yaml_parser_t) bool {
 
 	// In the block context, additional checks are required.
@@ -1264,7 +1264,7 @@ func yaml_parser_fetch_key(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the VALUE token.
+// yaml_parser_fetch_value Produce the VALUE token.
 func yaml_parser_fetch_value(parser *yaml_parser_t) bool {
 
 	simple_key := &parser.simple_keys[len(parser.simple_keys)-1]
@@ -1329,7 +1329,7 @@ func yaml_parser_fetch_value(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the ALIAS or ANCHOR token.
+// yaml_parser_fetch_anchor Produce the ALIAS or ANCHOR token.
 func yaml_parser_fetch_anchor(parser *yaml_parser_t, typ yaml_token_type_t) bool {
 	// An anchor or an alias could be a simple key.
 	if !yaml_parser_save_simple_key(parser) {
@@ -1348,7 +1348,7 @@ func yaml_parser_fetch_anchor(parser *yaml_parser_t, typ yaml_token_type_t) bool
 	return true
 }
 
-// Produce the TAG token.
+// yaml_parser_fetch_tag Produce the TAG token.
 func yaml_parser_fetch_tag(parser *yaml_parser_t) bool {
 	// A tag could be a simple key.
 	if !yaml_parser_save_simple_key(parser) {
@@ -1367,7 +1367,7 @@ func yaml_parser_fetch_tag(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Produce the SCALAR(...,literal) or SCALAR(...,folded) tokens.
+// yaml_parser_fetch_block_scalar Produce the SCALAR(...,literal) or SCALAR(...,folded) tokens.
 func yaml_parser_fetch_block_scalar(parser *yaml_parser_t, literal bool) bool {
 	// Remove any potential simple keys.
 	if !yaml_parser_remove_simple_key(parser) {
@@ -1386,7 +1386,7 @@ func yaml_parser_fetch_block_scalar(parser *yaml_parser_t, literal bool) bool {
 	return true
 }
 
-// Produce the SCALAR(...,single-quoted) or SCALAR(...,double-quoted) tokens.
+// yaml_parser_fetch_flow_scalar Produce the SCALAR(...,single-quoted) or SCALAR(...,double-quoted) tokens.
 func yaml_parser_fetch_flow_scalar(parser *yaml_parser_t, single bool) bool {
 	// A plain scalar could be a simple key.
 	if !yaml_parser_save_simple_key(parser) {
@@ -1405,7 +1405,7 @@ func yaml_parser_fetch_flow_scalar(parser *yaml_parser_t, single bool) bool {
 	return true
 }
 
-// Produce the SCALAR(...,plain) token.
+// yaml_parser_fetch_plain_scalar Produce the SCALAR(...,plain) token.
 func yaml_parser_fetch_plain_scalar(parser *yaml_parser_t) bool {
 	// A plain scalar could be a simple key.
 	if !yaml_parser_save_simple_key(parser) {
@@ -1424,7 +1424,7 @@ func yaml_parser_fetch_plain_scalar(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Eat whitespaces and comments until the next token is found.
+// yaml_parser_scan_to_next_token Eat whitespaces and comments until the next token is found.
 func yaml_parser_scan_to_next_token(parser *yaml_parser_t) bool {
 
 	// Until the next token is not found.
@@ -1482,7 +1482,7 @@ func yaml_parser_scan_to_next_token(parser *yaml_parser_t) bool {
 	return true
 }
 
-// Scan a YAML-DIRECTIVE or TAG-DIRECTIVE token.
+// yaml_parser_scan_directive a YAML-DIRECTIVE or TAG-DIRECTIVE token.
 //
 // Scope:
 //      %YAML    1.1    # a comment \n
@@ -1583,7 +1583,7 @@ func yaml_parser_scan_directive(parser *yaml_parser_t, token *yaml_token_t) bool
 	return true
 }
 
-// Scan the directive name.
+// yaml_parser_scan_directive_name the directive name.
 //
 // Scope:
 //      %YAML   1.1     # a comment \n
@@ -1622,7 +1622,7 @@ func yaml_parser_scan_directive_name(parser *yaml_parser_t, start_mark yaml_mark
 	return true
 }
 
-// Scan the value of VERSION-DIRECTIVE.
+// yaml_parser_scan_version_directive_value the value of VERSION-DIRECTIVE.
 //
 // Scope:
 //      %YAML   1.1     # a comment \n
@@ -1661,7 +1661,7 @@ func yaml_parser_scan_version_directive_value(parser *yaml_parser_t, start_mark 
 
 const max_number_length = 2
 
-// Scan the version number of VERSION-DIRECTIVE.
+// yaml_parser_scan_version_directive_number the version number of VERSION-DIRECTIVE.
 //
 // Scope:
 //      %YAML   1.1     # a comment \n
@@ -1698,7 +1698,7 @@ func yaml_parser_scan_version_directive_number(parser *yaml_parser_t, start_mark
 	return true
 }
 
-// Scan the value of a TAG-DIRECTIVE token.
+// yaml_parser_scan_tag_directive_value the value of a TAG-DIRECTIVE token.
 //
 // Scope:
 //      %TAG    !yaml!  tag:yaml.org,2002:  \n
@@ -1904,7 +1904,7 @@ func yaml_parser_scan_tag(parser *yaml_parser_t, token *yaml_token_t) bool {
 	return true
 }
 
-// Scan a tag handle.
+// yaml_parser_scan_tag_handle a tag handle.
 func yaml_parser_scan_tag_handle(parser *yaml_parser_t, directive bool, start_mark yaml_mark_t, handle *[]byte) bool {
 	// Check the initial '!' character.
 	if parser.unread < 1 && !yaml_parser_update_buffer(parser, 1) {
@@ -1949,7 +1949,7 @@ func yaml_parser_scan_tag_handle(parser *yaml_parser_t, directive bool, start_ma
 	return true
 }
 
-// Scan a tag.
+// yaml_parser_scan_tag_uri a tag.
 func yaml_parser_scan_tag_uri(parser *yaml_parser_t, directive bool, head []byte, start_mark yaml_mark_t, uri *[]byte) bool {
 	//size_t length = head ? strlen((char *)head) : 0
 	var s []byte
@@ -2007,7 +2007,7 @@ func yaml_parser_scan_tag_uri(parser *yaml_parser_t, directive bool, head []byte
 	return true
 }
 
-// Decode an URI-escape sequence corresponding to a single UTF-8 character.
+// yaml_parser_scan_uri_escapes Decode an URI-escape sequence corresponding to a single UTF-8 character.
 func yaml_parser_scan_uri_escapes(parser *yaml_parser_t, directive bool, start_mark yaml_mark_t, s *[]byte) bool {
 
 	// Decode the required number of characters.
@@ -2053,7 +2053,7 @@ func yaml_parser_scan_uri_escapes(parser *yaml_parser_t, directive bool, start_m
 	return true
 }
 
-// Scan a block scalar.
+// yaml_parser_scan_block_scalar a block scalar.
 func yaml_parser_scan_block_scalar(parser *yaml_parser_t, token *yaml_token_t, literal bool) bool {
 	// Eat the indicator '|' or '>'.
 	start_mark := parser.mark
@@ -2240,7 +2240,7 @@ func yaml_parser_scan_block_scalar(parser *yaml_parser_t, token *yaml_token_t, l
 	return true
 }
 
-// Scan indentation spaces and line breaks for a block scalar.  Determine the
+// yaml_parser_scan_block_scalar_breaks indentation spaces and line breaks for a block scalar.  Determine the
 // indentation level if needed.
 func yaml_parser_scan_block_scalar_breaks(parser *yaml_parser_t, indent *int, breaks *[]byte, start_mark yaml_mark_t, end_mark *yaml_mark_t) bool {
 	*end_mark = parser.mark
@@ -2295,7 +2295,7 @@ func yaml_parser_scan_block_scalar_breaks(parser *yaml_parser_t, indent *int, br
 	return true
 }
 
-// Scan a quoted scalar.
+// yaml_parser_scan_flow_scalar a quoted scalar.
 func yaml_parser_scan_flow_scalar(parser *yaml_parser_t, token *yaml_token_t, single bool) bool {
 	// Eat the left quote.
 	start_mark := parser.mark
@@ -2551,7 +2551,7 @@ func yaml_parser_scan_flow_scalar(parser *yaml_parser_t, token *yaml_token_t, si
 	return true
 }
 
-// Scan a plain scalar.
+// yaml_parser_scan_plain_scalar a plain scalar.
 func yaml_parser_scan_plain_scalar(parser *yaml_parser_t, token *yaml_token_t) bool {
 
 	var s, leading_break, trailing_breaks, whitespaces []byte

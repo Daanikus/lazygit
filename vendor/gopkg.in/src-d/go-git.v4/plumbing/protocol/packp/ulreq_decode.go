@@ -43,7 +43,7 @@ func (d *ulReqDecoder) Decode(v *UploadRequest) error {
 	return d.err
 }
 
-// fills out the parser stiky error
+// error fills out the parser stiky error
 func (d *ulReqDecoder) error(format string, a ...interface{}) {
 	msg := fmt.Sprintf(
 		"pkt-line %d: %s", d.nLine,
@@ -53,7 +53,7 @@ func (d *ulReqDecoder) error(format string, a ...interface{}) {
 	d.err = NewErrUnexpectedData(msg, d.line)
 }
 
-// Reads a new pkt-line from the scanner, makes its payload available as
+// nextLine Reads a new pkt-line from the scanner, makes its payload available as
 // p.line and increments p.nLine.  A successful invocation returns true,
 // otherwise, false is returned and the sticky error is filled out
 // accordingly.  Trims eols at the end of the payloads.
@@ -75,7 +75,7 @@ func (d *ulReqDecoder) nextLine() bool {
 	return true
 }
 
-// Expected format: want <hash>[ capabilities]
+// decodeFirstWant Expected format: want <hash>[ capabilities]
 func (d *ulReqDecoder) decodeFirstWant() stateFn {
 	if ok := d.nextLine(); !ok {
 		return nil
@@ -112,7 +112,7 @@ func (d *ulReqDecoder) readHash() (plumbing.Hash, bool) {
 	return hash, true
 }
 
-// Expected format: sp cap1 sp cap2 sp cap3...
+// decodeCaps Expected format: sp cap1 sp cap2 sp cap3...
 func (d *ulReqDecoder) decodeCaps() stateFn {
 	d.line = bytes.TrimPrefix(d.line, sp)
 	if err := d.data.Capabilities.Decode(d.line); err != nil {
@@ -122,7 +122,7 @@ func (d *ulReqDecoder) decodeCaps() stateFn {
 	return d.decodeOtherWants
 }
 
-// Expected format: want <hash>
+// decodeOtherWants Expected format: want <hash>
 func (d *ulReqDecoder) decodeOtherWants() stateFn {
 	if ok := d.nextLine(); !ok {
 		return nil
@@ -155,7 +155,7 @@ func (d *ulReqDecoder) decodeOtherWants() stateFn {
 	return d.decodeOtherWants
 }
 
-// Expected format: shallow <hash>
+// decodeShallow Expected format: shallow <hash>
 func (d *ulReqDecoder) decodeShallow() stateFn {
 	if bytes.HasPrefix(d.line, deepen) {
 		return d.decodeDeepen
@@ -184,7 +184,7 @@ func (d *ulReqDecoder) decodeShallow() stateFn {
 	return d.decodeShallow
 }
 
-// Expected format: deepen <n> / deepen-since <ul> / deepen-not <ref>
+// decodeDeepen Expected format: deepen <n> / deepen-since <ul> / deepen-not <ref>
 func (d *ulReqDecoder) decodeDeepen() stateFn {
 	if bytes.HasPrefix(d.line, deepenCommits) {
 		return d.decodeDeepenCommits

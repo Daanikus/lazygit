@@ -91,7 +91,7 @@ func (a *AdvRefs) addRefs(s storer.ReferenceStorer) error {
 	return a.resolveHead(s)
 }
 
-// If the server does not support symrefs capability,
+// resolveHead If the server does not support symrefs capability,
 // we need to guess the reference where HEAD is pointing to.
 //
 // Git versions prior to 1.8.4.3 has an special procedure to get

@@ -294,7 +294,7 @@ func (w *Watcher) readEvents() {
 	}
 }
 
-// Certain types of events can be "ignored" and not sent over the Events
+// ignoreLinux Certain types of events can be "ignored" and not sent over the Events
 // channel. Such as events marked ignore by the kernel, or MODIFY events
 // against files that do not exist.
 func (e *Event) ignoreLinux(mask uint32) bool {

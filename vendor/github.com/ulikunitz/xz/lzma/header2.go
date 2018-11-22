@@ -359,7 +359,7 @@ const maxDictCap = 1<<32 - 1
 // maxDictCapCode defines the maximum dictionary capacity code.
 const maxDictCapCode = 40
 
-// The function decodes the dictionary capacity byte, but doesn't change
+// decodeDictCap The function decodes the dictionary capacity byte, but doesn't change
 // for the correct range of the given byte.
 func decodeDictCap(c byte) int64 {
 	return (2 | int64(c)&1) << (11 + (c>>1)&0x1f)

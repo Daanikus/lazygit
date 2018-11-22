@@ -162,7 +162,7 @@ func (cfg *sharedConfig) setFromIniFiles(profile string, files []sharedConfigFil
 	return nil
 }
 
-// setFromFile loads the configuration from the file using
+// setFromIniFile loads the configuration from the file using
 // the profile provided. A sharedConfig pointer type value is used so that
 // multiple config file loadings can be chained.
 //

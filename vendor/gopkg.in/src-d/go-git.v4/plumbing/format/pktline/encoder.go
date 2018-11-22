@@ -77,7 +77,7 @@ func (e *Encoder) encodeLine(p []byte) error {
 	return err
 }
 
-// Returns the hexadecimal ascii representation of the 16 less
+// asciiHex16 Returns the hexadecimal ascii representation of the 16 less
 // significant bits of n.  The length of the returned slice will always
 // be 4.  Example: if n is 1234 (0x4d2), the return value will be
 // []byte{'0', '4', 'd', '2'}.
@@ -91,7 +91,7 @@ func asciiHex16(n int) []byte {
 	return ret[:]
 }
 
-// turns a byte into its hexadecimal ascii representation.  Example:
+// byteToASCIIHex turns a byte into its hexadecimal ascii representation.  Example:
 // from 11 (0xb) to 'b'.
 func byteToASCIIHex(n byte) byte {
 	if n < 10 {

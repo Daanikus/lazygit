@@ -59,7 +59,7 @@ func (l *Localizer) GetLanguage() string {
 	return l.language
 }
 
-// add translation file(s)
+// addBundles add translation file(s)
 func addBundles(log *logrus.Entry, i18nBundle *i18n.Bundle) {
 	fs := []func(*i18n.Bundle) error{
 		addPolish,

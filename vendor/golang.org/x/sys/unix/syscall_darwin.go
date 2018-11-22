@@ -49,7 +49,7 @@ type SockaddrDatalink struct {
 	raw    RawSockaddrDatalink
 }
 
-// Translate "kern.hostname" to []_C_int{0,1,2,3}.
+// nametomib Translate "kern.hostname" to []_C_int{0,1,2,3}.
 func nametomib(name string) (mib []_C_int, err error) {
 	const siz = unsafe.Sizeof(mib[0])
 
@@ -77,7 +77,7 @@ func nametomib(name string) (mib []_C_int, err error) {
 	return buf[0 : n/siz], nil
 }
 
-//sys   ptrace(request int, pid int, addr uintptr, data uintptr) (err error)
+// PtraceAttach sys   ptrace(request int, pid int, addr uintptr, data uintptr) (err error)
 func PtraceAttach(pid int) (err error) { return ptrace(PT_ATTACH, pid, 0, 0) }
 func PtraceDetach(pid int) (err error) { return ptrace(PT_DETACH, pid, 0, 0) }
 

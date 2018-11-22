@@ -10,7 +10,7 @@ package unix
 
 import "unsafe"
 
-// Round the length of a raw sockaddr up to align it properly.
+// cmsgAlignOf Round the length of a raw sockaddr up to align it properly.
 func cmsgAlignOf(salen int) int {
 	salign := sizeofPtr
 	// NOTE: It seems like 64-bit Darwin, DragonFly BSD and

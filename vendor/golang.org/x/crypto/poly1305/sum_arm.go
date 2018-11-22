@@ -6,7 +6,7 @@
 
 package poly1305
 
-// This function is implemented in sum_arm.s
+// poly1305_auth_armv6 This function is implemented in sum_arm.s
 //go:noescape
 func poly1305_auth_armv6(out *[16]byte, m *byte, mlen uint32, key *[32]byte)
 

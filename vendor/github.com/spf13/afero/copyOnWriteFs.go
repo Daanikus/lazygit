@@ -26,7 +26,7 @@ func NewCopyOnWriteFs(base Fs, layer Fs) Fs {
 	return &CopyOnWriteFs{base: base, layer: layer}
 }
 
-// Returns true if the file is not in the overlay
+// isBaseFile Returns true if the file is not in the overlay
 func (u *CopyOnWriteFs) isBaseFile(name string) (bool, error) {
 	if _, err := u.layer.Stat(name); err == nil {
 		return false, nil
@@ -127,7 +127,7 @@ func (u *CopyOnWriteFs) isNotExist(err error) bool {
 	return false
 }
 
-// Renaming files present only in the base layer is not permitted
+// Rename Renaming files present only in the base layer is not permitted
 func (u *CopyOnWriteFs) Rename(oldname, newname string) error {
 	b, err := u.isBaseFile(oldname)
 	if err != nil {
@@ -139,7 +139,7 @@ func (u *CopyOnWriteFs) Rename(oldname, newname string) error {
 	return u.layer.Rename(oldname, newname)
 }
 
-// Removing files present only in the base layer is not permitted. If
+// Remove Removing files present only in the base layer is not permitted. If
 // a file is present in the base layer and the overlay, only the overlay
 // will be removed.
 func (u *CopyOnWriteFs) Remove(name string) error {
@@ -212,7 +212,7 @@ func (u *CopyOnWriteFs) OpenFile(name string, flag int, perm os.FileMode) (File,
 	return u.layer.OpenFile(name, flag, perm)
 }
 
-// This function handles the 9 different possibilities caused
+// Open This function handles the 9 different possibilities caused
 // by the union which are the intersection of the following...
 //  layer: doesn't exist, exists as a file, and exists as a directory
 //  base:  doesn't exist, exists as a file, and exists as a directory

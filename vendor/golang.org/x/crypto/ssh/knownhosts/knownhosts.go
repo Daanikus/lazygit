@@ -72,7 +72,7 @@ func (ps hostPatterns) match(a addr) bool {
 	return matched
 }
 
-// See
+// wildcardMatch See
 // https://android.googlesource.com/platform/external/openssh/+/ab28f5495c85297e7a597c1ba62e996416da7c7e/addrmatch.c
 // The matching of * has no regard for separators, unlike filesystem globs
 func wildcardMatch(pat []byte, str []byte) bool {
@@ -142,7 +142,7 @@ func keyEq(a, b ssh.PublicKey) bool {
 	return bytes.Equal(a.Marshal(), b.Marshal())
 }
 
-// IsAuthorityForHost can be used as a callback in ssh.CertChecker
+// IsHostAuthority can be used as a callback in ssh.CertChecker
 func (db *hostKeyDB) IsHostAuthority(remote ssh.PublicKey, address string) bool {
 	h, p, err := net.SplitHostPort(address)
 	if err != nil {
@@ -350,7 +350,7 @@ func (db *hostKeyDB) check(address string, remote net.Addr, remoteKey ssh.Public
 	return db.checkAddr(hostToCheck, remoteKey)
 }
 
-// checkAddrs checks if we can find the given public key for any of
+// checkAddr checkAddrs checks if we can find the given public key for any of
 // the given addresses.  If we only find an entry for the IP address,
 // or only the hostname, then this still succeeds.
 func (db *hostKeyDB) checkAddr(a addr, remoteKey ssh.PublicKey) error {
@@ -388,7 +388,7 @@ func (db *hostKeyDB) checkAddr(a addr, remoteKey ssh.PublicKey) error {
 	return nil
 }
 
-// The Read function parses file contents.
+// Read The Read function parses file contents.
 func (db *hostKeyDB) Read(r io.Reader, filename string) error {
 	scanner := bufio.NewScanner(r)
 
@@ -505,7 +505,7 @@ func encodeHash(typ string, salt []byte, hash []byte) string {
 	}, "|")
 }
 
-// See https://android.googlesource.com/platform/external/openssh/+/ab28f5495c85297e7a597c1ba62e996416da7c7e/hostfile.c#120
+// hashHost See https://android.googlesource.com/platform/external/openssh/+/ab28f5495c85297e7a597c1ba62e996416da7c7e/hostfile.c#120
 func hashHost(hostname string, salt []byte) []byte {
 	mac := hmac.New(sha1.New, salt)
 	mac.Write([]byte(hostname))

@@ -185,7 +185,7 @@ func (r *Request) nextPageTokens() []interface{} {
 	return tokens
 }
 
-// Ensure a deprecated item is only logged once instead of each time its used.
+// logDeprecatedf Ensure a deprecated item is only logged once instead of each time its used.
 func logDeprecatedf(logger aws.Logger, flag *int32, msg string) {
 	if logger == nil {
 		return

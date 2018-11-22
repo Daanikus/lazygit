@@ -237,7 +237,7 @@ func (d *DotGit) Objects() ([]plumbing.Hash, error) {
 	return objects, nil
 }
 
-// Objects returns a slice with the hashes of objects found under the
+// ForEachObjectHash Objects returns a slice with the hashes of objects found under the
 // .git/objects/ directory.
 func (d *DotGit) ForEachObjectHash(fun func(plumbing.Hash) error) error {
 	files, err := d.fs.ReadDir(objectsPath)
@@ -564,7 +564,7 @@ func (d *DotGit) rewritePackedRefsWithoutRef(name plumbing.ReferenceName) (err e
 	return d.rewritePackedRefsWhileLocked(tmp, pr)
 }
 
-// process lines from a packed-refs file
+// processLine process lines from a packed-refs file
 func (d *DotGit) processLine(line string) (*plumbing.Reference, error) {
 	if len(line) == 0 {
 		return nil, nil

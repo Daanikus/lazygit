@@ -32,7 +32,7 @@ import (
 // Filepath separator defined by os.Separator.
 const FilePathSeparator = string(filepath.Separator)
 
-// Takes a reader and a path and writes the content
+// WriteReader Takes a reader and a path and writes the content
 func (a Afero) WriteReader(path string, r io.Reader) (err error) {
 	return WriteReader(a.Fs, path, r)
 }
@@ -60,7 +60,7 @@ func WriteReader(fs Fs, path string, r io.Reader) (err error) {
 	return
 }
 
-// Same as WriteReader but checks to see if file/directory already exists.
+// SafeWriteReader Same as WriteReader but checks to see if file/directory already exists.
 func (a Afero) SafeWriteReader(path string, r io.Reader) (err error) {
 	return SafeWriteReader(a.Fs, path, r)
 }
@@ -132,7 +132,7 @@ func GetTempDir(fs Fs, subPath string) string {
 	return dir
 }
 
-// Rewrite string to remove non-standard path characters
+// UnicodeSanitize Rewrite string to remove non-standard path characters
 func UnicodeSanitize(s string) string {
 	source := []rune(s)
 	target := make([]rune, 0, len(source))
@@ -156,7 +156,7 @@ func UnicodeSanitize(s string) string {
 	return string(target)
 }
 
-// Transform characters with accents into plain forms.
+// NeuterAccents Transform characters with accents into plain forms.
 func NeuterAccents(s string) string {
 	t := transform.Chain(norm.NFD, transform.RemoveFunc(isMn), norm.NFC)
 	result, _, _ := transform.String(t, string(s))
@@ -172,7 +172,7 @@ func (a Afero) FileContainsBytes(filename string, subslice []byte) (bool, error)
 	return FileContainsBytes(a.Fs, filename, subslice)
 }
 
-// Check if a file contains a specified byte slice.
+// FileContainsBytes Check if a file contains a specified byte slice.
 func FileContainsBytes(fs Fs, filename string, subslice []byte) (bool, error) {
 	f, err := fs.Open(filename)
 	if err != nil {
@@ -187,7 +187,7 @@ func (a Afero) FileContainsAnyBytes(filename string, subslices [][]byte) (bool, 
 	return FileContainsAnyBytes(a.Fs, filename, subslices)
 }
 
-// Check if a file contains any of the specified byte slices.
+// FileContainsAnyBytes Check if a file contains any of the specified byte slices.
 func FileContainsAnyBytes(fs Fs, filename string, subslices [][]byte) (bool, error) {
 	f, err := fs.Open(filename)
 	if err != nil {
@@ -198,7 +198,7 @@ func FileContainsAnyBytes(fs Fs, filename string, subslices [][]byte) (bool, err
 	return readerContainsAny(f, subslices...), nil
 }
 
-// readerContains reports whether any of the subslices is within r.
+// readerContainsAny reports whether any of the subslices is within r.
 func readerContainsAny(r io.Reader, subslices ...[]byte) bool {
 
 	if r == nil || len(subslices) == 0 {
@@ -308,7 +308,7 @@ func (a Afero) Exists(path string) (bool, error) {
 	return Exists(a.Fs, path)
 }
 
-// Check if a file or directory exists.
+// Exists Check if a file or directory exists.
 func Exists(fs Fs, path string) (bool, error) {
 	_, err := fs.Stat(path)
 	if err == nil {

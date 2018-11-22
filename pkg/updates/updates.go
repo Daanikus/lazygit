@@ -84,7 +84,7 @@ func (u *Updater) RecordLastUpdateCheck() error {
 	return u.Config.SaveAppState()
 }
 
-// expecting version to be of the form `v12.34.56`
+// majorVersionDiffers expecting version to be of the form `v12.34.56`
 func (u *Updater) majorVersionDiffers(oldVersion, newVersion string) bool {
 	if oldVersion == "unversioned" {
 		return false
@@ -217,7 +217,7 @@ func (u *Updater) mappedArch(arch string) string {
 	return arch
 }
 
-// example: https://github.com/jesseduffield/lazygit/releases/download/v0.1.73/lazygit_0.1.73_Darwin_x86_64.tar.gz
+// getBinaryUrl example: https://github.com/jesseduffield/lazygit/releases/download/v0.1.73/lazygit_0.1.73_Darwin_x86_64.tar.gz
 func (u *Updater) getBinaryUrl(newVersion string) (string, error) {
 	extension := "tar.gz"
 	if runtime.GOOS == "windows" {

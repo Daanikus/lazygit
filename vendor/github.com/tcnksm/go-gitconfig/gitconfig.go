@@ -79,7 +79,7 @@ func Repository() (string, error) {
 	return repo, nil
 }
 
-// Github extracts github token from `Entire gitconfig`.
+// GithubToken extracts github token from `Entire gitconfig`.
 // This is same as Entire("github.token")
 func GithubToken() (string, error) {
 	return Entire("github.token")

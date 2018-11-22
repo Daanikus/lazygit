@@ -283,7 +283,7 @@ func (d *decoder) callUnmarshaler(n *node, u Unmarshaler) (good bool) {
 	return true
 }
 
-// d.prepare initializes and dereferences pointers and calls UnmarshalYAML
+// prepare d.prepare initializes and dereferences pointers and calls UnmarshalYAML
 // if a value is found to implement it.
 // It returns the initialized and dereferenced out value, whether
 // unmarshalling was already done by UnmarshalYAML, and if so whether
